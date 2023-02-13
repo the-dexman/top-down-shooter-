@@ -14,11 +14,16 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode downKey;
     public delegate void PlayerHit(Transform enemyHitTransform);
     public static PlayerHit playerHit;
+    Animator animator;
+
+    int rotate;
 
     // Start is called before the first frame update
     void Start()
     {
         playerHit += PlayerHitReaction;
+
+        animator = gameObject.GetComponent<Animator>();
         boxCollider = gameObject.GetComponent<BoxCollider>();
     }
 
@@ -26,11 +31,43 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        Vector3 playerMovement = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
-
-        gameObject.transform.Translate(playerMovement.normalized * speed * Time.deltaTime, Space.World);
+        float upAxis = Input.GetAxisRaw("Vertical");
+        float rightAxis = Input.GetAxisRaw("Horizontal");
         
 
+
+        if (rightAxis == 1 && upAxis == 1)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            animator.SetInteger("WalkID", 1);
+        }
+        else if (rightAxis == 1 && upAxis == 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            animator.SetInteger("WalkID", 2);
+        }
+        else if (rightAxis == -1 && upAxis == 1)
+        {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+            animator.SetInteger("WalkID", 1);
+        }
+        else if (rightAxis == -1 && upAxis == 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+            animator.SetInteger("WalkID", 2);
+        }
+        else
+        {  
+            animator.SetInteger("WalkID", 0);
+        }
+
+
+        Vector3 playerMovement = new Vector3(rightAxis, upAxis, 0);
+
+        gameObject.transform.Translate(playerMovement.normalized * speed * Time.deltaTime, Space.World);
+
+        
+        
 
 
     }
