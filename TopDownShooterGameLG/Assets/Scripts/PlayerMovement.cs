@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     public delegate void PlayerHit(Transform enemyHitTransform);
     public static PlayerHit playerHit;
 
-    // Start is called before the first frame update
+    // Start is called before the first frame update oui oui trés bien
     void Start()
     {
         playerHit += PlayerHitReaction;
