@@ -8,13 +8,15 @@ public class EnemyMovement : MonoBehaviour
 
     public GameObject playerObject;
     public float movementSpeed;
-    
+    public Rigidbody rigidbodyComponent;
+
     Vector3 playerDirection;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        rigidbodyComponent = gameObject.GetComponent<Rigidbody>();
+        rigidbodyComponent.useGravity = false;
     }
 
     // Update is called once per frame
