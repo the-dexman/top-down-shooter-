@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode downKey;
     public delegate void PlayerHit(Transform enemyHitTransform);
     public static PlayerHit playerHit;
+    float upAxis;
+    float rightAxis;
     Animator animator;
 
     int rotate;
@@ -43,8 +45,8 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
-        float upAxis = Input.GetAxisRaw("Vertical");
-        float rightAxis = Input.GetAxisRaw("Horizontal");
+        upAxis = Input.GetAxisRaw("Vertical");
+        rightAxis = Input.GetAxisRaw("Horizontal");
 
 
         if (isDashing)
@@ -57,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
 
         gameObject.transform.Translate(playerMovement.normalized * speed * Time.deltaTime, Space.World);
 
+        //Walk animations
 		if (rightAxis == 1 && upAxis == 1)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -67,6 +70,11 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, 0);
             animator.SetInteger("WalkID", 2);
         }
+        else if (rightAxis == 1 && upAxis == -1)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            animator.SetInteger("WalkID", 3);
+        }
         else if (rightAxis == -1 && upAxis == 1)
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
@@ -76,6 +84,21 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
             animator.SetInteger("WalkID", 2);
+        }
+        else if (rightAxis == -1 && upAxis == -1)
+        {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+            animator.SetInteger("WalkID", 3);
+        }
+        else if (rightAxis == 0 && upAxis == -1)
+        {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+            animator.SetInteger("WalkID", 4);
+        }
+        else if (rightAxis == 0 && upAxis == 1)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            animator.SetInteger("WalkID", 5);
         }
         else
         {  
@@ -101,7 +124,7 @@ public class PlayerMovement : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
-        rigidbodyComponent.velocity = new Vector2(playerHorizontal * dashingPower, playerVertical * dashingPower);
+        rigidbodyComponent.velocity = new Vector2(rightAxis * dashingPower, upAxis * dashingPower);
         yield return new WaitForSeconds(dashingTime);
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);

@@ -363,6 +363,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 348a5ecc35dafb94fb9128d6b737afcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dashingPower: 24
+  dashingTime: 0.2
+  dashingCooldown: 1
+  canDash: 1
+  isDashing: 0
+  dash: 32
+  rigidbodyComponent: {fileID: 9156023612165458174}
   speed: 5
   bounceSpeed: 10
   leftKey: 97

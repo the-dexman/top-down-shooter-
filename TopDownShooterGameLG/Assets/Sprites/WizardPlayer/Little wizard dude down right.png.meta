@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6680f46dfe7d7c44b9824897e1b9803d
+guid: a959e5704cace1b48a268618b57bfd2e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 0
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Little wizard dude walk right_0
+      name: Little wizard dude down right_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 528664f679bb2cf4f800597912abb7bb
-      internalID: -1148116324
+      spriteID: f9527321b72be4341aaa96ee0a023f2e
+      internalID: 1530166389
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Little wizard dude walk right_1
+      name: Little wizard dude down right_1
       rect:
         serializedVersion: 2
         x: 2048
@@ -140,14 +140,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 179e63504a48f404db459faeb895ad7a
-      internalID: 1690483731
+      spriteID: d9515210d441207459561a10960af656
+      internalID: -1183290220
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Little wizard dude walk right_2
+      name: Little wizard dude down right_2
       rect:
         serializedVersion: 2
         x: 0
@@ -161,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad14b992641a6e7469ae2290e5085536
-      internalID: -866148364
+      spriteID: 70d61795e4776d34da289218a36a469d
+      internalID: 2031251126
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Little wizard dude walk right_3
+      name: Little wizard dude down right_3
       rect:
         serializedVersion: 2
         x: 2048
@@ -182,8 +182,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 38959566ef516a845921ef2a06ea81f6
-      internalID: 1821102512
+      spriteID: 008a1c27beebb8d4f85e285b828b2ef2
+      internalID: -679352760
       vertices: []
       indices: 
       edges: []
@@ -191,7 +191,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: bbe8afb11e52bdb43bddfe00ae2db2c5
+    spriteID: 1dc0c18894a7df040ab32dfdaf281b1e
     internalID: 0
     vertices: []
     indices: 
@@ -199,10 +199,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Little wizard dude walk right_3: 1821102512
-      Little wizard dude walk right_2: -866148364
-      Little wizard dude walk right_1: 1690483731
-      Little wizard dude walk right_0: -1148116324
+      Little wizard dude down right_2: 2031251126
+      Little wizard dude down right_1: -1183290220
+      Little wizard dude down right_3: -679352760
+      Little wizard dude down right_0: 1530166389
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
