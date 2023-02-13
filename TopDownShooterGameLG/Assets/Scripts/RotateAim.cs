@@ -15,9 +15,6 @@ public class RotateAim : MonoBehaviour
     public Transform right;
     public Transform left;
 
-    public GameObject projectile;
-    GameObject myProjectile;
-    Rigidbody rb;
 
     public Vector3 direction;
 
@@ -32,22 +29,26 @@ public class RotateAim : MonoBehaviour
     {
         if (Input.GetKeyDown(downKey))
         {
-            myProjectile = Instantiate(projectile, transform.position, Quaternion.identity) as GameObject;
-            GameObject GO = Instantiate();
-
-            GO.transform.parent = ParentGameObject;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            
         }
         else if (Input.GetKeyDown(upKey))
         {
-            
+            transform.rotation = Quaternion.Euler(0, 0, 180);
+       
         }
+    
         else if (Input.GetKeyDown(rightKey))
         {
-            
+            transform.rotation = Quaternion.Euler(0, 0, 90);
         }
+    
         else if (Input.GetKeyDown(leftKey))
         {
-            
+            transform.rotation = Quaternion.Euler(0, 0, -90);
         }
+    
+
+        
     }
 }
