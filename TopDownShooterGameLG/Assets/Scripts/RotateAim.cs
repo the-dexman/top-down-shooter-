@@ -33,6 +33,9 @@ public class RotateAim : MonoBehaviour
         if (Input.GetKeyDown(downKey))
         {
             myProjectile = Instantiate(projectile, transform.position, Quaternion.identity) as GameObject;
+            GameObject GO = Instantiate();
+
+            GO.transform.parent = ParentGameObject;
         }
         else if (Input.GetKeyDown(upKey))
         {
