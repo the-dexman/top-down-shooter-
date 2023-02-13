@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public float dashingPower = 24f;
+    public float dashingTime = 0.2f;
+    public float dashingCooldown = 1f;
+    public bool canDash = true;
+    public bool isDashing = false;
+    public KeyCode dash;
+    float playerHorizontal;
+    float playerVertical;
+    public Rigidbody rigidbodyComponent;
 
     public float speed = 2f;
     public float bounceSpeed;
@@ -18,25 +27,37 @@ public class PlayerMovement : MonoBehaviour
 
     int rotate;
 
-    // Start is called before the first frame update
+    // Start is called before the first frame update oui oui trés bien
     void Start()
     {
         playerHit += PlayerHitReaction;
 
         animator = gameObject.GetComponent<Animator>();
         boxCollider = gameObject.GetComponent<BoxCollider>();
+        rigidbodyComponent = gameObject.GetComponent<Rigidbody>();
+        rigidbodyComponent.useGravity = false;
     }
 
     // Update is called once per frame
 
     void Update()
     {
+
         float upAxis = Input.GetAxisRaw("Vertical");
         float rightAxis = Input.GetAxisRaw("Horizontal");
-        
 
 
-        if (rightAxis == 1 && upAxis == 1)
+        if (isDashing)
+        {
+            return;
+        }
+		
+		
+		 Vector3 playerMovement = new Vector3(rightAxis, upAxis, 0);
+
+        gameObject.transform.Translate(playerMovement.normalized * speed * Time.deltaTime, Space.World);
+
+		if (rightAxis == 1 && upAxis == 1)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
             animator.SetInteger("WalkID", 1);
@@ -60,15 +81,12 @@ public class PlayerMovement : MonoBehaviour
         {  
             animator.SetInteger("WalkID", 0);
         }
+		
 
-
-        Vector3 playerMovement = new Vector3(rightAxis, upAxis, 0);
-
-        gameObject.transform.Translate(playerMovement.normalized * speed * Time.deltaTime, Space.World);
-
-        
-        
-
+        if (Input.GetKey(KeyCode.Space) && canDash)
+        {
+            StartCoroutine(Dash());
+        }
 
     }
 
@@ -78,5 +96,15 @@ public class PlayerMovement : MonoBehaviour
 
         gameObject.GetComponent<Rigidbody>().AddForce(directionToEnemy * -1 * bounceSpeed, ForceMode.Impulse);
         
+    }
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+        rigidbodyComponent.velocity = new Vector2(playerHorizontal * dashingPower, playerVertical * dashingPower);
+        yield return new WaitForSeconds(dashingTime);
+        isDashing = false;
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
     }
 }
