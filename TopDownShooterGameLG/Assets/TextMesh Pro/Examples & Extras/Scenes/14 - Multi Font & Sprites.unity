@@ -215,9 +215,19 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<<< HEAD:TopDownShooterGameLG/Assets/TextMesh Pro/Examples & Extras/Scenes/14 - Multi Font & Sprites.unity
   - component: {fileID: 921526342}
   - component: {fileID: 921526341}
   - component: {fileID: 921526338}
+========
+  - component: {fileID: 976893047}
+  - component: {fileID: 976893046}
+  - component: {fileID: 976893045}
+  - component: {fileID: 976893044}
+  - component: {fileID: 976893049}
+  - component: {fileID: 976893048}
+  - component: {fileID: 976893050}
+>>>>>>>> origin/WilliamBranch:TopDownShooterGameLG/Assets/Scenes/SampleScene.unity
   m_Layer: 0
   m_Name: TextMeshPro
   m_TagString: Untagged
@@ -237,6 +247,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<<< HEAD:TopDownShooterGameLG/Assets/TextMesh Pro/Examples & Extras/Scenes/14 - Multi Font & Sprites.unity
+========
+  speed: 2
+  rigidbodyComponent: {fileID: 0}
+  leftKey: 97
+  rightKey: 100
+  upKey: 119
+  downKey: 115
+--- !u!114 &976893050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976893043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8410bd8e0872d334d96715bf67f82e76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  rigidbodyComponent: {fileID: 0}
+  dash: 32
+--- !u!1 &1528868916
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1528868920}
+  - component: {fileID: 1528868919}
+  - component: {fileID: 1528868918}
+  - component: {fileID: 1528868917}
+  m_Layer: 0
+  m_Name: Plane
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!64 &1528868917
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528868916}
+>>>>>>>> origin/WilliamBranch:TopDownShooterGameLG/Assets/Scenes/SampleScene.unity
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1

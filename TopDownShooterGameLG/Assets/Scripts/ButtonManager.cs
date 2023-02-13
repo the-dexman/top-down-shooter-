@@ -6,9 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
-    public GameObject credits;
-    public GameObject mainMenu;
-    public GameObject selectionManager;
+    public GameObject Credits;
+    public GameObject MainMenu;
 
     //after a new function is made you can then put the gameobject with the script as a function for the button where you can then select one of the functions
     //in the code for the button to press, make sure to put this code as parent to the buttons and as a child to a UI canvas
@@ -20,16 +19,15 @@ public class ButtonManager : MonoBehaviour
 
     public void CreditsButton()
     {
-        credits.SetActive(true);
-        mainMenu.SetActive(false);
+        Credits.SetActive(true);
+        MainMenu.SetActive(false);
         Debug.Log("credits");
-        
     }
 
     public void CreditsBackButton()
     {
-        credits.SetActive(false);
-        mainMenu.SetActive(true);
+        Credits.SetActive(false);
+        MainMenu.SetActive(true);
         Debug.Log("credits back");
     }
 
@@ -40,3 +38,4 @@ public class ButtonManager : MonoBehaviour
     }
 
 }
+
