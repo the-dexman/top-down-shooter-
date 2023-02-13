@@ -6,10 +6,12 @@ public class PlayerMovement : MonoBehaviour
 {
 
     public float speed = 2f;
-    public Rigidbody2D rigidbodyComponent;
+    public Rigidbody rigidbodyComponent;
     BoxCollider boxCollider;
     public KeyCode leftKey;
     public KeyCode rightKey;
+    public KeyCode upKey;
+    public KeyCode downKey;
 
     // Start is called before the first frame update
     void Start()
@@ -21,21 +23,12 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        //Walking
-        if (Input.GetKey(rightKey))
-        {
-            transform.Translate(new Vector3(1, 0, 0) * speed * Time.deltaTime, Space.World);
-            gameObject.transform.localEulerAngles = new Vector3(0, 0, 0);
+        Vector3 playerMovement = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
 
-        }
-
-        if (Input.GetKey(leftKey))
-        {
-            transform.Translate(new Vector3(-1, 0, 0) * speed * Time.deltaTime, Space.World);
-            gameObject.transform.localEulerAngles = new Vector3(0, 180, 0);
-        }
-
+        gameObject.transform.Translate(playerMovement.normalized * speed * Time.deltaTime, Space.World);
         
-        
+
+
+
     }
 }
