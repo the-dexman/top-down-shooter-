@@ -12,6 +12,8 @@ public class PlayerDash : MonoBehaviour
     public Rigidbody rigidbodyComponent;
     BoxCollider boxCollider;
     public KeyCode dash;
+    float playerHorizontal;
+    float playerVertical;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,7 @@ public class PlayerDash : MonoBehaviour
 
     void Update()
     {
+
         Vector2 playerMovement = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
         if (Input.GetKey(KeyCode.Space))
         {
@@ -34,9 +37,10 @@ public class PlayerDash : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
-
-        //float originalGravity = rigidbodyCompone
-        yield return new WaitForSeconds(dashingCooldown);
+        rigidbodyComponent.velocity = new Vector2();
+        yield return new WaitForSeconds(dashingTime);
         isDashing = false;
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
     }
 }

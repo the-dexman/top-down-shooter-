@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public float dashingPower = 24f;
+    public float dashingTime = 0.2f;
+    public float dashingCooldown = 1f;
+    public bool canDash = true;
+    public bool isDashing = false;
+    public KeyCode dash;
+    float playerHorizontal;
+    float playerVertical;
+    public Rigidbody rigidbodyComponent;
 
     public float speed = 2f;
     public float bounceSpeed;
@@ -20,18 +29,31 @@ public class PlayerMovement : MonoBehaviour
     {
         playerHit += PlayerHitReaction;
         boxCollider = gameObject.GetComponent<BoxCollider>();
+        rigidbodyComponent = gameObject.GetComponent<Rigidbody>();
+        rigidbodyComponent.useGravity = false;
     }
 
     // Update is called once per frame
 
     void Update()
     {
-        Vector3 playerMovement = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
+        if (isDashing)
+        {
+            return;
+        }
+        playerHorizontal = Input.GetAxisRaw("Horizontal");
+        playerVertical = Input.GetAxisRaw("Vertical");
+
+
+        Vector3 playerMovement = new Vector3(playerHorizontal, playerVertical, 0);
 
         gameObject.transform.Translate(playerMovement.normalized * speed * Time.deltaTime, Space.World);
-        
 
 
+        if (Input.GetKey(KeyCode.Space) && canDash)
+        {
+            StartCoroutine(Dash());
+        }
 
     }
 
@@ -41,5 +63,15 @@ public class PlayerMovement : MonoBehaviour
 
         gameObject.GetComponent<Rigidbody>().AddForce(directionToEnemy * -1 * bounceSpeed, ForceMode.Impulse);
         
+    }
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+        rigidbodyComponent.velocity = new Vector2(playerHorizontal * dashingPower, playerVertical * dashingPower);
+        yield return new WaitForSeconds(dashingTime);
+        isDashing = false;
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
     }
 }
