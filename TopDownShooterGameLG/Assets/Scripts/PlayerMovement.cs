@@ -10,8 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public bool canDash = true;
     public bool isDashing = false;
     public KeyCode dash;
-    float playerHorizontal;
-    float playerVertical;
+    float rightAxis;
+    float upAxis;
     public Rigidbody rigidbodyComponent;
 
     public float speed = 2f;
@@ -43,8 +43,8 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
-        float upAxis = Input.GetAxisRaw("Vertical");
-        float rightAxis = Input.GetAxisRaw("Horizontal");
+        upAxis = Input.GetAxisRaw("Vertical");
+        rightAxis = Input.GetAxisRaw("Horizontal");
 
 
         if (isDashing)
@@ -83,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
         }
 		
 
-        if (Input.GetKey(KeyCode.Space) && canDash)
+        if (Input.GetKey(KeyCode.LeftShift) && canDash)
         {
             StartCoroutine(Dash());
         }
@@ -101,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
-        rigidbodyComponent.velocity = new Vector2(playerHorizontal * dashingPower, playerVertical * dashingPower);
+        rigidbodyComponent.velocity = new Vector2( rightAxis * dashingPower, upAxis * dashingPower);
         yield return new WaitForSeconds(dashingTime);
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
