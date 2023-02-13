@@ -782,7 +782,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 831639289}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5bef4723274ca540a17423baed692ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 89534bfe7d548be44b43e6afc30132be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Credits: {fileID: 1831127777}
@@ -1520,7 +1520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ButtonInputManager: {fileID: 831639289}
-  gameSceneID: 0
+  gameSceneID: 1
   creditsClosed: 0
 --- !u!4 &1632576273
 Transform:
