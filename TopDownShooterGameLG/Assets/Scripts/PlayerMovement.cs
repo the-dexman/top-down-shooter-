@@ -21,15 +21,11 @@ public class PlayerMovement : MonoBehaviour
     public Color hurtColor;
 
     //damage variables
-    float rightAxis;
-    float upAxis;
     public Rigidbody rigidbodyComponent;
-    public float speed = 2f;
     public float bounceSpeed;
     
 
     //object references
-    public Rigidbody rigidbodyComponent;
     BoxCollider boxCollider;
     Animator animator;
     SpriteRenderer spriteRenderer;
