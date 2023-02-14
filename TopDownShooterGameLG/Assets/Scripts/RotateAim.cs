@@ -6,14 +6,11 @@ using static UnityEngine.GraphicsBuffer;
 public class RotateAim : MonoBehaviour
 {
     public KeyCode downKey;
-    public KeyCode upKey;
     public KeyCode rightKey;
+    public KeyCode upKey;
     public KeyCode leftKey;
 
-    public Transform down;
-    public Transform up;
-    public Transform right;
-    public Transform left;
+    
 
 
     public Vector3 direction;
@@ -27,28 +24,52 @@ public class RotateAim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(downKey))
+        if (Input.GetKey(rightKey))
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
             
         }
-        else if (Input.GetKeyDown(upKey))
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 180);
-       
-        }
-    
-        else if (Input.GetKeyDown(rightKey))
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 90);
-        }
-    
-        else if (Input.GetKeyDown(leftKey))
+        if (Input.GetKey(downKey))
         {
             transform.rotation = Quaternion.Euler(0, 0, -90);
         }
-    
 
-        
+        if (Input.GetKey(leftKey))
+        {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+
+        }
+
+        if (Input.GetKey(upKey))
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 90);
+        }
+
+        if (Input.GetKey(leftKey) && Input.GetKey(upKey))
+        {
+
+            transform.rotation = Quaternion.Euler(0, 180, 45);
+
+
+        }
+        if (Input.GetKey(rightKey) && Input.GetKey(upKey))
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 45);
+        }
+        if (Input.GetKey(rightKey) && Input.GetKey(downKey))
+        {
+            transform.rotation = Quaternion.Euler(0, 0, -45);
+        }
+        if (Input.GetKey(leftKey) && Input.GetKey(downKey))
+        {
+            transform.rotation = Quaternion.Euler(0, 180, -45);
+        }
+
+
+
+
+
+
+
     }
 }
