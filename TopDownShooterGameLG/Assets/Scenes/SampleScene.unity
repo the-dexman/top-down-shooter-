@@ -134,10 +134,10 @@ GameObject:
   - component: {fileID: 362586147}
   - component: {fileID: 362586144}
   - component: {fileID: 362586143}
+  - component: {fileID: 362586150}
   - component: {fileID: 362586149}
   - component: {fileID: 362586148}
-  - component: {fileID: 362586150}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BasicRangedEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -157,9 +157,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObject: {fileID: 1298288762}
-  movementSpeed: 0
+  movementSpeed: 2
   enemyType: 1
-  rangedEnemyDistance: 5
+  rangedEnemyDistance: 10
 --- !u!65 &362586144
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -274,7 +274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 4819256021021343622}
-  shootTimerLength: 5
+  shootTimerLength: 4
   bulletAmount: 1
   bulletObject: {fileID: 6522484152675167849, guid: e8162bb7303e10747bec76c4a1daff7c, type: 3}
   shootPoint: {fileID: 1964576819}
@@ -656,7 +656,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1964576819}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ShootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -10,13 +10,17 @@ public class EnemyMovement : MonoBehaviour
     public float movementSpeed;
     public int enemyType;
     public float rangedEnemyDistance;
+    float tempMovementSpeed;
+    Animator animator;
 
     Vector3 playerDirection;
 
     // Start is called before the first frame update
     void Start()
     {
+        tempMovementSpeed = movementSpeed;
         HealthManager.playerDeath += PlayerDied;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -35,18 +39,23 @@ public class EnemyMovement : MonoBehaviour
             gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
-        if (enemyType == 0)
+        
+
+
+        if (animator.GetCurrentAnimatorStateInfo(0).IsTag("stopMoving") == false)
         {
-            BasicMeleeEnemy();
-        }
-        if (enemyType == 1)
-        {
-            BasicRangedEnemy();
+            if (enemyType == 0)
+            {
+                BasicMeleeEnemy();
+            }
+            if (enemyType == 1)
+            {
+                BasicRangedEnemy();
+            }
         }
 
 
     }
-
     void PlayerDied()
     {
         this.enabled = false;

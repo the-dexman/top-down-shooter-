@@ -178,10 +178,15 @@ public class PlayerMovement : MonoBehaviour
 
         if (isInvincible == false && this.enabled)
         {
-            if (collision.gameObject.tag == "Enemy")
+            if (collision.gameObject.layer == 6)
             {
                 playerHit(collision.gameObject.transform);
                 StartCoroutine(InvincibilityFrames(invincibilityTime, hurtColor));
+
+                if (collision.gameObject.tag == "Bullet")
+                {
+                    Destroy(collision.gameObject);
+                }
             }
         }
         
