@@ -110,7 +110,7 @@ public class LevelGenerator : MonoBehaviour
                 Generating = false;
             }
         }
-
-        Instantiate(roomVariants[0], transform.position, Quaternion.identity);
+        
+       // Instantiate(roomVariants[0], transform.position, Quaternion.identity);
     }
 }
