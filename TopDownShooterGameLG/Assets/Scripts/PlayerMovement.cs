@@ -13,7 +13,6 @@ public class PlayerMovement : MonoBehaviour
     float rightAxis;
     float upAxis;
     public Rigidbody rigidbodyComponent;
-
     public float speed = 2f;
     public float bounceSpeed;
     BoxCollider boxCollider;
