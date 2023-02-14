@@ -31,11 +31,11 @@ public class EnemyMovement : MonoBehaviour
 
         playerDirection = playerObject.transform.position - gameObject.transform.position;
 
-        if (playerDirection.x >= 0)
+        if (playerDirection.x > 0)
         {
             gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
-        else
+        else if (playerDirection.x < 0)
         {
             gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
@@ -76,6 +76,15 @@ public class EnemyMovement : MonoBehaviour
         if (playerDirection.magnitude < rangedEnemyDistance - 1)
         {
             gameObject.transform.Translate(playerDirection.normalized * -1 * movementSpeed * Time.deltaTime, Space.World);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            Vector3 vectorToCollision = other.gameObject.transform.position - transform.position;
+            transform.Translate(-vectorToCollision*Time.deltaTime);
         }
     }
 }
