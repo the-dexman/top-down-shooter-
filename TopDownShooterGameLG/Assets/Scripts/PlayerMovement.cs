@@ -21,6 +21,10 @@ public class PlayerMovement : MonoBehaviour
     public Color hurtColor;
 
     //damage variables
+    float rightAxis;
+    float upAxis;
+    public Rigidbody rigidbodyComponent;
+    public float speed = 2f;
     public float bounceSpeed;
     
 
@@ -44,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
     public static PlayerHit playerHit;
     
 
-    // Start is called before the first frame update oui oui trés bien
+    // Start is called before the first frame update oui oui trï¿½s bien
     void Start()
     {
         rigidbodyComponent.useGravity = false;
@@ -128,7 +132,7 @@ public class PlayerMovement : MonoBehaviour
         }
 		
 
-        if (Input.GetKey(KeyCode.Space) && canDash)
+        if (Input.GetKey(KeyCode.LeftShift) && canDash)
         {
             StartCoroutine(Dash());
         }
