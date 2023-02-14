@@ -20,7 +20,7 @@ public class CameraFollowingScript : MonoBehaviour
     {
         Vector3 followingDirection = followingTarget.position - transform.position;
 
-        transform.Translate(new Vector3(followingDirection.x, followingDirection.y, -10) * followSpeed * Time.deltaTime);
+        transform.Translate(new Vector3(followingDirection.x, followingDirection.y, 0) * followSpeed * Time.deltaTime);
         
     }
 }

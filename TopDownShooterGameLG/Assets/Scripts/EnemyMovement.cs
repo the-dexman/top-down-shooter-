@@ -8,33 +8,64 @@ public class EnemyMovement : MonoBehaviour
 
     public GameObject playerObject;
     public float movementSpeed;
+    public int enemyType;
+    public float rangedEnemyDistance;
 
     Vector3 playerDirection;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        HealthManager.playerDeath += PlayerDied;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+
         playerDirection = playerObject.transform.position - gameObject.transform.position;
 
-        
+        if (playerDirection.x >= 0)
+        {
+            gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+        else
+        {
+            gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
 
-        gameObject.transform.Translate(playerDirection.normalized * movementSpeed * Time.deltaTime);
+        if (enemyType == 0)
+        {
+            BasicMeleeEnemy();
+        }
+        if (enemyType == 1)
+        {
+            BasicRangedEnemy();
+        }
 
 
     }
 
-    private void OnTriggerEnter(Collider collision)
+    void PlayerDied()
     {
-        if (collision.gameObject == playerObject)
-        {
-            PlayerMovement.playerHit(gameObject.transform);
-        }
+        this.enabled = false;
+    }
 
+    void BasicMeleeEnemy()
+    {
+        gameObject.transform.Translate(playerDirection.normalized * movementSpeed * Time.deltaTime, Space.World);
+    }
+
+    void BasicRangedEnemy()
+    {
+        if (playerDirection.magnitude > rangedEnemyDistance + 1)
+        {
+            gameObject.transform.Translate(playerDirection.normalized * movementSpeed * Time.deltaTime, Space.World);
+        }
+        if (playerDirection.magnitude < rangedEnemyDistance - 1)
+        {
+            gameObject.transform.Translate(playerDirection.normalized * -1 * movementSpeed * Time.deltaTime, Space.World);
+        }
     }
 }
