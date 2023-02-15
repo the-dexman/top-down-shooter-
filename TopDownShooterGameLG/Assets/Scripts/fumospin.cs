@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class fumospin : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int spinSpeed;
 
     // Update is called once per frame
     void Update()
     {
         float youAreRacist = transform.rotation.y;
-        gameObject.transform.Rotate(0, 1, 0);
+        gameObject.transform.Rotate(0, spinSpeed * Time.deltaTime, 0);
     }
 }
