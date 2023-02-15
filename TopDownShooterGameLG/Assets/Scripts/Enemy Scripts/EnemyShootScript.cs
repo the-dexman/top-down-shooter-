@@ -35,7 +35,7 @@ public class EnemyShootScript : MonoBehaviour
                 GameObject bullet = Instantiate(bulletObject, shootPoint.position, shootPoint.rotation);
                 bullet.transform.LookAt(target);
                 bullet.transform.Rotate(0, 90, Random.Range(-bulletSpread, bulletSpread));
-                animator.Play("SniperZombieShoot");
+                animator.Play("EnemyShoot");
             }
             
 

@@ -10,8 +10,8 @@ public class EnemyMovement : MonoBehaviour
     public float movementSpeed;
     public int enemyType;
     public float rangedEnemyDistance;
-    Animator animator;
-    float enemyHealth;
+    internal Animator animator;
+    internal float enemyHealth;
     public float maxHealth;
     public Color deathColor;
     public Color hurtColor;
