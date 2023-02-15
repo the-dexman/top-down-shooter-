@@ -5,7 +5,10 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     float bulletLifeTimer;
+    public float bulletLifeTimerLength;
     public float bulletSpeed;
+    public float bulletDamage;
+    public int directionMultiplier;
 
     // Start is called before the first frame update
     void Start()
@@ -18,9 +21,9 @@ public class BulletScript : MonoBehaviour
     {
         bulletLifeTimer += Time.deltaTime;
 
-        transform.Translate(-Vector3.right * bulletSpeed * Time.deltaTime, Space.Self);
+        transform.Translate(-Vector3.right * directionMultiplier * bulletSpeed * Time.deltaTime, Space.Self);
 
-        if (bulletLifeTimer > 5)
+        if (bulletLifeTimer > bulletLifeTimerLength)
         {
             Destroy(gameObject);
         }

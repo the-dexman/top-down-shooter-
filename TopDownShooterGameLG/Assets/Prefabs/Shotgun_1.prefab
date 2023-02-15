@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 8175618267097519665}
   - component: {fileID: 6689722352316855742}
   - component: {fileID: 1944791561569561788}
-  m_Layer: 0
+  - component: {fileID: 8293751009898603117}
+  - component: {fileID: 1298337389139994335}
+  m_Layer: 3
   m_Name: Shotgun_1
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,11 +73,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1546554873
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 722594667, guid: 3adc3a0436b9a9e4c88d363fdfac9fea, type: 3}
-  m_Color: {r: 0.3773585, g: 0.36905184, b: 0.36905184, a: 1}
+  m_Color: {r: 1, g: 0.9983116, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -101,3 +103,33 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &8293751009898603117
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298580534595282515}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.1
+  m_Height: 0.1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1298337389139994335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298580534595282515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19b65d6f5a2ff64e9bb68d1a57ef59c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletLifeTimerLength: 0.5
+  bulletSpeed: 10
+  bulletDamage: 0.5
+  directionMultiplier: -1

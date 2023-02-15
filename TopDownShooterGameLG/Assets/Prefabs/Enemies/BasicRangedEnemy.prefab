@@ -98,6 +98,10 @@ MonoBehaviour:
   movementSpeed: 2
   enemyType: 1
   rangedEnemyDistance: 10
+  maxHealth: 2
+  deathColor: {r: 0.6156863, g: 0.6156863, b: 0.6156863, a: 1}
+  hurtColor: {r: 1, g: 0.32941177, b: 0.32941177, a: 1}
+  hurtTime: 0.2
 --- !u!114 &2281554046858520104
 MonoBehaviour:
   m_ObjectHideFlags: 0

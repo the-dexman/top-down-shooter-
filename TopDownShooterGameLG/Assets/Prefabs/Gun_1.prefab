@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 2483211776821351770}
   - component: {fileID: 7232510457006554983}
   - component: {fileID: -1011737706833186752}
-  m_Layer: 0
+  - component: {fileID: 1118646894295943699}
+  - component: {fileID: 711472659691999252}
+  m_Layer: 3
   m_Name: Gun_1
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1546554873
-  m_SortingLayer: 0
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: -586086585, guid: 89cf470f6dc301c4698cc70ff6fadad0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -101,3 +103,33 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &1118646894295943699
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5701309621236110721}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.1
+  m_Height: 0.4
+  m_Direction: 0
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &711472659691999252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5701309621236110721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19b65d6f5a2ff64e9bb68d1a57ef59c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletLifeTimerLength: 2
+  bulletSpeed: 10
+  bulletDamage: 1
+  directionMultiplier: -1

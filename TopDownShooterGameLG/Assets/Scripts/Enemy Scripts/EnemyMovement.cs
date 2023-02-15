@@ -10,8 +10,13 @@ public class EnemyMovement : MonoBehaviour
     public float movementSpeed;
     public int enemyType;
     public float rangedEnemyDistance;
-    float tempMovementSpeed;
     Animator animator;
+    float enemyHealth;
+    public float maxHealth;
+    public Color deathColor;
+    public Color hurtColor;
+    public float hurtTime;
+    SpriteRenderer spriteRenderer;
 
     Vector3 playerDirection;
 
@@ -19,15 +24,28 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         playerObject = GameObject.FindGameObjectWithTag("Player");
-        tempMovementSpeed = movementSpeed;
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         HealthManager.playerDeath += PlayerDied;
         animator = GetComponent<Animator>();
+        enemyHealth = maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
 
+        if (enemyHealth <= 0)
+        {
+            if (gameObject.GetComponent<EnemyShootScript>() != null)
+            {
+                Destroy(gameObject.GetComponent<EnemyShootScript>());
+                
+            }
+            gameObject.GetComponent<SpriteRenderer>().color = deathColor;
+            Destroy(gameObject.GetComponent<BoxCollider>());    
+            animator.Play("EnemyDeath");
+            Destroy(this);
+        }
 
         playerDirection = playerObject.transform.position - gameObject.transform.position;
 
@@ -55,6 +73,7 @@ public class EnemyMovement : MonoBehaviour
             }
         }
 
+        
 
     }
     void PlayerDied()
@@ -79,17 +98,32 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    
+
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Enemy")
         {
             Vector3 vectorToCollision = other.gameObject.transform.position - transform.position;
-            transform.Translate(-vectorToCollision*Time.deltaTime);
+            transform.Translate(new Vector3(-vectorToCollision.x * Time.deltaTime, -vectorToCollision.y * Time.deltaTime, 0));
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Bullet" && other.gameObject.layer == 3);
+        if (other.gameObject.tag == "Bullet" && other.gameObject.layer == 3)
+        {
+            enemyHealth -= other.gameObject.GetComponent<BulletScript>().bulletDamage;
+            StartCoroutine(FlashRed());
+            Destroy(other.gameObject);
+        }
     }
+
+    private IEnumerator FlashRed()
+    {
+        spriteRenderer.color = hurtColor;
+        yield return new WaitForSeconds(hurtTime);
+        spriteRenderer.color = Color.white;
+    }
+
 }

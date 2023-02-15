@@ -65,6 +65,10 @@ MonoBehaviour:
   movementSpeed: 2
   enemyType: 0
   rangedEnemyDistance: 0
+  maxHealth: 4
+  deathColor: {r: 0.6156863, g: 0.6156863, b: 0.6156863, a: 1}
+  hurtColor: {r: 1, g: 0.32941177, b: 0.32941177, a: 1}
+  hurtTime: 0.2
 --- !u!95 &7334459716673095588
 Animator:
   serializedVersion: 4

@@ -27,6 +27,8 @@ public class Shoot : MonoBehaviour
     float range;
 
 
+    bool shootDelay = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,32 +42,36 @@ public class Shoot : MonoBehaviour
 
         if (timer <= 0)
         {
-            if (Input.GetKey(shoot))
-            {
-                
-                    
 
+
+            if (Input.GetKey(downKey) || Input.GetKey(rightKey) || Input.GetKey(leftKey) || Input.GetKey(upKey))
+            {
+
+
+
+
+
+                if (shootDelay) //to make sure you don't move and shoot on the same frame (if you turn you'll shoot the way you're facing right now first)
+                {
+                    shootDelay = false;
+                    return;
+
+                }
+                else
+                {
                     myProjectile = Instantiate(projectile, transform.position, transform.rotation) as GameObject; //transform.position gör så att 
 
-                    rb = myProjectile.GetComponent<Rigidbody>();
-                    
-                    rb.AddForce(transform.right * forceMagnitude); //ForceMode.Impulse lägger till en direkt kraft beroende på massan av objektet
+                    timer = fireRate;
+                    shootDelay = true;
+
+                }
 
 
-
-
-
-
-
-                
-                Destroy(myProjectile, range);
-
-                timer = fireRate;
 
             }
         }
 
-        
+
 
 
 
