@@ -7,6 +7,8 @@ public class HealthManager : MonoBehaviour
 {
     public int playerHealth;
     public int deathSceneID;
+    public delegate void PlayerDeath();
+    public static PlayerDeath playerDeath;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +22,8 @@ public class HealthManager : MonoBehaviour
         if (playerHealth <= 0)
         {
             Debug.Log("DEATH");
-            SceneManager.LoadScene(deathSceneID);
+            playerDeath.Invoke();
+            this.enabled = false;
         }
     }
 

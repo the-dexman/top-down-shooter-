@@ -4,16 +4,18 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Enemy
+  - Bullet
   - Room
   - LevelGenerator
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
+  - EnemyLayer
   - 
   - 
   - 
@@ -42,4 +44,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Bullets
+    uniqueID: 1546554873
     locked: 0
