@@ -10,6 +10,7 @@ public class LevelGenerator : MonoBehaviour
     public Transform[] startingPositions;
     public GameObject[] roomVariants;
     public GameObject lastRoom;
+    public GameObject player;
     int lastRoomType;
     /*
      * index 0 = LR
@@ -31,10 +32,13 @@ public class LevelGenerator : MonoBehaviour
     bool Generating = true;
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         int randomStartingPosition = Random.Range(0, startingPositions.Length); // chooses a random number from 0 to the lenght of an array
         transform.position = startingPositions[randomStartingPosition].position; //takes the chosen array unit and takes the transform position of it and sets the curent game objects position to that array units position.
-        Instantiate(roomVariants[0], transform.position, Quaternion.identity); //spawns in prefab from a prefab array at current gameobjects position and gives no rotation
-
+        Instantiate(roomVariants[1], transform.position, Quaternion.identity); //spawns in prefab from a prefab array at current gameobjects position and gives no rotation
+        Vector3 playerPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1.25f);
+        player.transform.position = playerPosition;
+        
         direction = Random.Range(1, 5); //gives direction a random number from 1 to 5
     }
     private void Update() // time between creating rooms
