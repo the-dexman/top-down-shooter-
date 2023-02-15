@@ -4577,9 +4577,10 @@ GameObject:
   - component: {fileID: 5319812591237124338}
   - component: {fileID: -806439208340660313}
   - component: {fileID: 7238760933662292870}
+  - component: {fileID: 7491634853683863395}
   m_Layer: 0
   m_Name: LRT room
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4628,8 +4629,21 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 5, z: 1}
+  m_Size: {x: 15, y: 13, z: 1}
   m_Center: {x: 0, y: 0, z: -1.3}
+--- !u!65 &7491634853683863395
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5319812591237124339}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 3, z: 1}
+  m_Center: {x: 0, y: 10, z: -1.3}
 --- !u!1 &5319812591239423373
 GameObject:
   m_ObjectHideFlags: 0

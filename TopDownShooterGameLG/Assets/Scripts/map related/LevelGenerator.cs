@@ -9,6 +9,9 @@ public class LevelGenerator : MonoBehaviour
 
     public Transform[] startingPositions;
     public GameObject[] roomVariants;
+    public GameObject lastRoom;
+    public GameObject player;
+    int lastRoomType;
     /*
      * index 0 = LR
      * index 1 = LRB
@@ -29,11 +32,14 @@ public class LevelGenerator : MonoBehaviour
     bool Generating = true;
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         int randomStartingPosition = Random.Range(0, startingPositions.Length); // chooses a random number from 0 to the lenght of an array
         transform.position = startingPositions[randomStartingPosition].position; //takes the chosen array unit and takes the transform position of it and sets the curent game objects position to that array units position.
-        Instantiate(roomVariants[0], transform.position, Quaternion.identity); //spawns in prefab from a prefab array at current gameobjects position and gives no rotation
-
-        direction = Random.Range(1, 6); //gives direction a random number from 1 to 5
+        Instantiate(roomVariants[1], transform.position, Quaternion.identity); //spawns in prefab from a prefab array at current gameobjects position and gives no rotation
+        Vector3 playerPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1.25f);
+        player.transform.position = playerPosition;
+        
+        direction = Random.Range(1, 5); //gives direction a random number from 1 to 5
     }
     private void Update() // time between creating rooms
     {
@@ -58,7 +64,8 @@ public class LevelGenerator : MonoBehaviour
 
                 // to make the room levels actually playable with connecting rooms
                 int random = Random.Range(0, roomVariants.Length);
-                Instantiate(roomVariants[random], transform.position, Quaternion.identity);
+                lastRoom = Instantiate(roomVariants[random], transform.position, Quaternion.identity);
+                lastRoomType = random;
 
                 direction = Random.Range(1, 5);
                 if (direction == 3)
@@ -69,6 +76,7 @@ public class LevelGenerator : MonoBehaviour
                 {
                     direction = 5;
                 }
+                Debug.Log("moved right, created room");
             }
             else
             {
@@ -85,7 +93,8 @@ public class LevelGenerator : MonoBehaviour
                 direction = Random.Range(3, 6);
 
                 int random = Random.Range(0, roomVariants.Length);
-                Instantiate(roomVariants[random], transform.position, Quaternion.identity);
+                lastRoom = Instantiate(roomVariants[random], transform.position, Quaternion.identity);
+                lastRoomType = random;
             }
             else
             {
@@ -101,16 +110,34 @@ public class LevelGenerator : MonoBehaviour
                 direction = Random.Range(1, 6);
 
                 //
-                int random = Random.Range(2,4);
-                Instantiate(roomVariants[random], transform.position, Quaternion.identity);
-
+                
+                if (lastRoomType == 3 || lastRoomType == 0)
+                {
+                    ReDoLastRoom();
+                }
+                lastRoom = Instantiate(roomVariants[2], transform.position, Quaternion.identity);
+                lastRoomType = 2;
             }
-            else //stop level generation
+            else //stop level generation and make a boss room
             {
                 Generating = false;
+
             }
         }
         
        // Instantiate(roomVariants[0], transform.position, Quaternion.identity);
+    }
+
+    void ReDoLastRoom()
+    {
+        Destroy(lastRoom);
+        Vector2 newPos = new Vector2(transform.position.x, transform.position.y + moveAmountVertical);
+        transform.position = newPos;
+        int random = Random.Range(1, 3);
+        Instantiate(roomVariants[random], transform.position, Quaternion.identity);
+        newPos = new Vector2(transform.position.x, transform.position.y - moveAmountVertical);
+        transform.position = newPos;
+
+
     }
 }

@@ -548,7 +548,7 @@ GameObject:
   - component: {fileID: 1420698991}
   m_Layer: 0
   m_Name: Level Generator
-  m_TagString: Untagged
+  m_TagString: LevelGenerator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -590,8 +590,9 @@ MonoBehaviour:
   - {fileID: 567950548850260078, guid: 78f4890cd43cf4541a647fe4c5f9dde4, type: 3}
   - {fileID: 4653530116332009144, guid: 44560fab2c286ae4ca477ddd5c5a50c0, type: 3}
   - {fileID: 5319812591237124339, guid: 591aa23086e3c824883be4d4dd131aff, type: 3}
+  lastRoom: {fileID: 0}
   direction: 0
-  startTimeBetweenRooms: 0.25
+  startTimeBetweenRooms: 0.1
   minimumX: 0
   maximumX: 51
   minimumY: -51
@@ -758,15 +759,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8622169501632756626, guid: f9b08390d7e0d8f4283f7a2852bb15fc, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8622169501632756626, guid: f9b08390d7e0d8f4283f7a2852bb15fc, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8622169501632756626, guid: f9b08390d7e0d8f4283f7a2852bb15fc, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8622169501632756626, guid: f9b08390d7e0d8f4283f7a2852bb15fc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
