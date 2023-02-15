@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class HealthManager : MonoBehaviour
 {
+    [SerializeField]
+    public int maxHealth;
     public int playerHealth;
     public int deathSceneID;
     public delegate void PlayerDeath();
@@ -30,5 +32,19 @@ public class HealthManager : MonoBehaviour
     void TakeDamage(Transform enemyHitPosition)
     {
         playerHealth -= 1;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "medkit")
+        {
+            if (maxHealth!= playerHealth)
+            {
+                playerHealth++;
+                Debug.Log("HEALED");
+                Destroy(other.gameObject);
+            }
+            
+        }
     }
 }

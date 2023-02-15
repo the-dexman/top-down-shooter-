@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class EnemyMovement : MonoBehaviour
 {
+    private EnemyDrop getItem;
 
     public GameObject playerObject;
     public float movementSpeed;
@@ -28,6 +30,8 @@ public class EnemyMovement : MonoBehaviour
         HealthManager.playerDeath += PlayerDied;
         animator = GetComponent<Animator>();
         enemyHealth = maxHealth;
+
+        getItem = GetComponent<EnemyDrop>();
     }
 
     // Update is called once per frame
@@ -36,6 +40,13 @@ public class EnemyMovement : MonoBehaviour
 
         if (enemyHealth <= 0)
         {
+            if (getItem != null)
+            {
+               
+                getItem.MobDrops();
+                
+            }
+
             if (gameObject.GetComponent<EnemyShootScript>() != null)
             {
                 Destroy(gameObject.GetComponent<EnemyShootScript>());

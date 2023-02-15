@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7029984051733804141}
   - component: {fileID: 3573231909798095412}
   - component: {fileID: 7359161091964751088}
+  - component: {fileID: -4908604844396739352}
   m_Layer: 0
   m_Name: Bullet - kopia (2)
   m_TagString: Untagged
@@ -101,3 +102,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-4908604844396739352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8344257317206100011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19b65d6f5a2ff64e9bb68d1a57ef59c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletLifeTimerLength: 3
+  bulletSpeed: 5
+  bulletDamage: 2
+  directionMultiplier: -2
