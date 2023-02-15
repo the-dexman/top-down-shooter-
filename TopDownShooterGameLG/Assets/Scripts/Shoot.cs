@@ -42,22 +42,22 @@ public class Shoot : MonoBehaviour
         {
             if (Input.GetKey(shoot))
             {
-                
-                    
-
-                    myProjectile = Instantiate(projectile, transform.position, transform.rotation) as GameObject; //transform.position gör så att 
-
-                    rb = myProjectile.GetComponent<Rigidbody>();
-                    
-                    rb.AddForce(transform.right * forceMagnitude); //ForceMode.Impulse lägger till en direkt kraft beroende på massan av objektet
 
 
+
+                myProjectile = Instantiate(projectile, transform.position, transform.rotation) as GameObject; //transform.position gör så att 
+
+                rb = myProjectile.GetComponent<Rigidbody>();
+
+                rb.AddForce(transform.right * forceMagnitude); //ForceMode.Impulse lägger till en direkt kraft beroende på massan av objektet
 
 
 
 
 
-                
+
+
+
                 Destroy(myProjectile, range);
 
                 timer = fireRate;
@@ -65,7 +65,7 @@ public class Shoot : MonoBehaviour
             }
         }
 
-        
+
 
 
 
