@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7334459716673095588}
   - component: {fileID: 7334459716673095589}
   - component: {fileID: -7502865152131901462}
+  - component: {fileID: -4791330228728826038}
   m_Layer: 6
   m_Name: BasicMeleeEnemy
   m_TagString: Enemy
@@ -157,3 +158,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-4791330228728826038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7334459716673095599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f2d50cd9e099a34a8faddd3d31489c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drop1: {fileID: 9006115143004029211, guid: 6a89ac35662b1fa4ea6f3167fb93194a, type: 3}
+  drop2: {fileID: 6234089161317211338, guid: c36147eb510b6a549a008b526ebc24c8, type: 3}
+  drop3: {fileID: 7821219034380647375, guid: 27803b5b143869a4a967d92010a743cf, type: 3}
+  drop4: {fileID: 2253477015915354689, guid: d51379f33efd8d64b87593d58d801ee1, type: 3}
+  randomness: 30
