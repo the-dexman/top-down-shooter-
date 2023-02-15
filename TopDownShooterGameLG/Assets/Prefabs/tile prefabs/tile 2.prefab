@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3898132368258477737, guid: 9d4799625b2e8b6419afc63fdc8ffb50, type: 3}
       propertyPath: m_Name
-      value: Cube
+      value: tile 2
       objectReference: {fileID: 0}
     - target: {fileID: 5417667192039888232, guid: 9d4799625b2e8b6419afc63fdc8ffb50, type: 3}
       propertyPath: m_Sprite

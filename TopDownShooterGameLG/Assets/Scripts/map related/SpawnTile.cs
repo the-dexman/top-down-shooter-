@@ -8,7 +8,6 @@ public class SpawnTile : MonoBehaviour
     public GameObject instantiatedObject;
     void Start()
     {
-       
         int random = Random.Range(0, tileObjects.Length);
         instantiatedObject = Instantiate(tileObjects[random], transform.position, Quaternion.identity, gameObject.transform);
     }

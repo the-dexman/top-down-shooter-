@@ -11,6 +11,8 @@ public class LevelGenerator : MonoBehaviour
     public GameObject[] roomVariants;
     public GameObject lastRoom;
     public GameObject player;
+    public GameObject bossRoom;
+    public GameObject fumoRoom;
     int lastRoomType;
     /*
      * index 0 = LR
@@ -93,8 +95,18 @@ public class LevelGenerator : MonoBehaviour
                 direction = Random.Range(3, 6);
 
                 int random = Random.Range(0, roomVariants.Length);
-                lastRoom = Instantiate(roomVariants[random], transform.position, Quaternion.identity);
-                lastRoomType = random;
+                int random2 = Random.Range(0, 101);
+                if (random == 2)
+                {
+                    lastRoom = Instantiate(fumoRoom, transform.position, Quaternion.identity);
+                    lastRoomType = 2;
+                }
+                else
+                {
+                    lastRoom = Instantiate(roomVariants[random], transform.position, Quaternion.identity);
+                    lastRoomType = random;
+                }
+
             }
             else
             {
@@ -115,13 +127,24 @@ public class LevelGenerator : MonoBehaviour
                 {
                     ReDoLastRoom();
                 }
-                lastRoom = Instantiate(roomVariants[2], transform.position, Quaternion.identity);
+                int random2 = Random.Range(0, 101);
+                if (random2 == 1)
+                {
+                    lastRoom = Instantiate(fumoRoom, transform.position, Quaternion.identity);
+                }
+                else
+                {
+                    lastRoom = Instantiate(roomVariants[2], transform.position, Quaternion.identity);
+                }
                 lastRoomType = 2;
             }
             else //stop level generation and make a boss room
             {
                 Generating = false;
-
+                ReDoLastRoomBoss();
+                Vector2 newPos = new Vector2(transform.position.x, transform.position.y - moveAmountVertical);
+                transform.position = newPos;
+                Instantiate(bossRoom, transform.position, Quaternion.identity);
             }
         }
         
@@ -131,13 +154,22 @@ public class LevelGenerator : MonoBehaviour
     void ReDoLastRoom()
     {
         Destroy(lastRoom);
+
         Vector2 newPos = new Vector2(transform.position.x, transform.position.y + moveAmountVertical);
         transform.position = newPos;
         int random = Random.Range(1, 3);
+
         Instantiate(roomVariants[random], transform.position, Quaternion.identity);
         newPos = new Vector2(transform.position.x, transform.position.y - moveAmountVertical);
         transform.position = newPos;
 
 
+    }
+
+    void ReDoLastRoomBoss()
+    {
+        Destroy(lastRoom);
+        int random = Random.Range(1, 3);
+        Instantiate(roomVariants[random], transform.position, Quaternion.identity);
     }
 }
