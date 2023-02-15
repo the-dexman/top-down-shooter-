@@ -87,4 +87,9 @@ public class EnemyMovement : MonoBehaviour
             transform.Translate(-vectorToCollision*Time.deltaTime);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Bullet" && other.gameObject.layer == 3);
+    }
 }
