@@ -11,6 +11,7 @@ public class LevelGenerator : MonoBehaviour
     public GameObject[] roomVariants;
     public GameObject lastRoom;
     public GameObject player;
+    public GameObject bossRoom;
     int lastRoomType;
     /*
      * index 0 = LR
@@ -121,7 +122,10 @@ public class LevelGenerator : MonoBehaviour
             else //stop level generation and make a boss room
             {
                 Generating = false;
-
+                ReDoLastRoomBoss();
+                Vector2 newPos = new Vector2(transform.position.x, transform.position.y - moveAmountVertical);
+                transform.position = newPos;
+                Instantiate(bossRoom, transform.position, Quaternion.identity);
             }
         }
         
@@ -131,13 +135,22 @@ public class LevelGenerator : MonoBehaviour
     void ReDoLastRoom()
     {
         Destroy(lastRoom);
+
         Vector2 newPos = new Vector2(transform.position.x, transform.position.y + moveAmountVertical);
         transform.position = newPos;
         int random = Random.Range(1, 3);
+
         Instantiate(roomVariants[random], transform.position, Quaternion.identity);
         newPos = new Vector2(transform.position.x, transform.position.y - moveAmountVertical);
         transform.position = newPos;
 
 
+    }
+
+    void ReDoLastRoomBoss()
+    {
+        Destroy(lastRoom);
+        int random = Random.Range(1, 3);
+        Instantiate(roomVariants[random], transform.position, Quaternion.identity);
     }
 }
