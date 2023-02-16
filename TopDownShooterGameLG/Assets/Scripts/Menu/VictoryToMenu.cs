@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class BackToMeny : MonoBehaviour
+
+public class VictoryToMenu : MonoBehaviour
 {
     [SerializeField]
-    float timer;
-    [SerializeField]
     int sceneNumber;
+
+    public KeyCode input;
+    public KeyCode input2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,13 +20,16 @@ public class BackToMeny : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime;
-        if (timer < 0)
+        if (Input.GetKeyDown(input))
         {
             SceneManager.LoadScene(sceneNumber);
         }
+        if (Input.GetKeyDown(input2))
+        {
+            SceneManager.LoadScene(sceneNumber);
+        }
+        
     }
 
     
-
 }
