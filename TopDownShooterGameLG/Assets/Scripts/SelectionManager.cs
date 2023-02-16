@@ -19,6 +19,9 @@ public class SelectionManager : MonoBehaviour
     public EventSystem eventSystem;
     public int selectorOffset = 500;
 
+    //image files
+    public GameObject[] mainMenuImages;
+
 
     // Start is called before the first frame update
     void Start()
@@ -33,24 +36,71 @@ public class SelectionManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            if (currentButtonID == mainMenuButtons.Length - 1)
+            if (currentButtonID == mainMenuButtons.Length - 1) //if on exit, set to start
             {
+
+                
                 currentButtonID = 0;
+
+                //coding is my passion -william, 2023
+                mainMenuImages[4].SetActive(true);
+                mainMenuImages[4 + 1].SetActive(false);
+                mainMenuImages[0].SetActive(false);
+                mainMenuImages[0 + 1].SetActive(true);
             }
             else
             {
                 currentButtonID += 1;
+
+                if (currentButtonID == 1) //there is probably such a more effecient way but im birdbrain
+                {
+                    //go from start to credits
+                    mainMenuImages[0].SetActive(true);
+                    mainMenuImages[0 + 1].SetActive(false);
+                    mainMenuImages[2].SetActive(false);
+                    mainMenuImages[2 + 1].SetActive(true);
+                }
+                else
+                {
+                    //credits to exit
+                    mainMenuImages[2].SetActive(true);
+                    mainMenuImages[2 + 1].SetActive(false);
+                    mainMenuImages[4].SetActive(false);
+                    mainMenuImages[4 + 1].SetActive(true);
+                }
             }
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            if (currentButtonID == 0)
+            if (currentButtonID == 0)//if on start then make to exit
             {
                 currentButtonID = mainMenuButtons.Length - 1;
+
+
+                mainMenuImages[4].SetActive(!true);
+                mainMenuImages[4 + 1].SetActive(!false);
+                mainMenuImages[0].SetActive(!false);
+                mainMenuImages[0 + 1].SetActive(!true);
             }
             else
             {
                 currentButtonID -= 1;
+
+                if (currentButtonID == 1) //if gone from exit to credits
+                {
+                    mainMenuImages[4].SetActive(true);
+                    mainMenuImages[4 + 1].SetActive(false);
+                    mainMenuImages[2].SetActive(false);
+                    mainMenuImages[2 + 1].SetActive(true);
+                }
+                else //if gone from credits to start
+                {
+                    //this code is specially lazy
+                    mainMenuImages[0].SetActive(!true);
+                    mainMenuImages[0 + 1].SetActive(!false);
+                    mainMenuImages[2].SetActive(!false);
+                    mainMenuImages[2 + 1].SetActive(!true);
+                }
             }
         }
         currentButton = mainMenuButtons[currentButtonID];
@@ -62,8 +112,8 @@ public class SelectionManager : MonoBehaviour
             currentButtonPos = creditsBackButton.gameObject.transform.position;
             
         }
-
-        selectionMarker.transform.position = new Vector3(currentButtonPos.x - selectorOffset, currentButtonPos.y, currentButtonPos.z);
+        // selectionMarker.transform.position = new Vector3(currentButtonPos.x -selectionOffset, currentButtonPos.y, currentButtonPos.z);
+        selectionMarker.transform.position = new Vector3(selectionMarker.transform.position.x, currentButtonPos.y, currentButtonPos.z);
             
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
