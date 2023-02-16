@@ -43,7 +43,7 @@ public class WeaponSwitch : MonoBehaviour
         }
 
 
-        if (weaponId == 1 && sniperActive == true)
+        if (weaponId == 1 && shotgunActive == true)
         {
             weapon1.SetActive(false);
             weapon2.SetActive(true);
@@ -54,7 +54,7 @@ public class WeaponSwitch : MonoBehaviour
 
 
 
-        if (weaponId == 2 && shotgunActive == true)
+        if (weaponId == 2 && smgActive == true)
         {
             weapon1.SetActive(false);
             weapon2.SetActive(false);
@@ -64,7 +64,7 @@ public class WeaponSwitch : MonoBehaviour
 
 
 
-        if (weaponId == 3 && smgActive == true)
+        if (weaponId == 3 && sniperActive == true)
         {
             weapon1.SetActive(false);
             weapon2.SetActive(false);
