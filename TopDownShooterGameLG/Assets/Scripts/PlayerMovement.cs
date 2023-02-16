@@ -145,6 +145,7 @@ public class PlayerMovement : MonoBehaviour
     void PlayerHitReaction(Transform enemyHitTransform)
     {
         Vector3 directionToEnemy = enemyHitTransform.position - gameObject.transform.position;
+        directionToEnemy.z = 0;
 
         gameObject.GetComponent<Rigidbody>().AddForce(directionToEnemy.normalized * -1 * bounceSpeed, ForceMode.Impulse);
         

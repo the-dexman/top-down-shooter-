@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Startmenu.unity
     guid: a87219ac8898906499ec9491bd54e806
   - enabled: 1
-    path: Assets/Scenes/LevelDesigns.unity
+    path: Assets/Scenes/JonahLevelScene.unity
     guid: 1ff18115e2ba9224bbb7b7d52ffd3eea
   - enabled: 1
     path: Assets/Scenes/GameScene.unity

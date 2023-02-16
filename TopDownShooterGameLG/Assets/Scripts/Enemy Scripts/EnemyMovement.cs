@@ -18,10 +18,15 @@ public class EnemyMovement : MonoBehaviour
     public Color deathColor;
     public Color hurtColor;
     public float hurtTime;
+    public float ambientTimerLength;
+    float ambientTimer;
     SpriteRenderer spriteRenderer;
+    AudioSource audioSource;
 
     Vector3 playerDirection;
 
+    public AudioClip[] deathSounds;
+    public AudioClip[] ambientSounds;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,12 +36,22 @@ public class EnemyMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         enemyHealth = maxHealth;
 
+        audioSource = gameObject.GetComponent<AudioSource>();
+
         getItem = GetComponent<EnemyDrop>();
+
+        Physics.IgnoreCollision(gameObject.GetComponent<CapsuleCollider>(), playerObject.GetComponent<CapsuleCollider>(), true);
     }
 
     // Update is called once per frame
     void Update()
     {
+        ambientTimer += Time.deltaTime;
+        if (ambientTimer >= ambientTimerLength)
+        {
+            audioSource.clip = ambientSounds[Random.Range(0, ambientSounds.Length)];
+            audioSource.Play();
+        }
 
         if (enemyHealth <= 0)
         {
@@ -46,6 +61,8 @@ public class EnemyMovement : MonoBehaviour
                 getItem.MobDrops();
                 
             }
+            audioSource.clip = deathSounds[Random.Range(0, deathSounds.Length)];
+            audioSource.Play();
 
             if (gameObject.GetComponent<EnemyShootScript>() != null)
             {
@@ -110,17 +127,6 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.tag == "Enemy")
-        {
-            Vector3 vectorToCollision = other.gameObject.transform.position - transform.position;
-            transform.Translate(new Vector3(-vectorToCollision.x * Time.deltaTime, -vectorToCollision.y * Time.deltaTime, 0));
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Bullet" && other.gameObject.layer == 3)
@@ -134,8 +140,11 @@ public class EnemyMovement : MonoBehaviour
     private IEnumerator FlashRed()
     {
         spriteRenderer.color = hurtColor;
+
         yield return new WaitForSeconds(hurtTime);
         spriteRenderer.color = Color.white;
     }
+
+
 
 }
