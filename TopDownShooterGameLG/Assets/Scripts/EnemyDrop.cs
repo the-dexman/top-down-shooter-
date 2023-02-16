@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 
 public class EnemyDrop : MonoBehaviour
 {
+     
+
     public GameObject drop1;
     public GameObject drop2;
     public GameObject drop3;
@@ -36,6 +39,7 @@ public class EnemyDrop : MonoBehaviour
         if (30 > rnd && rnd >= 15 )
         {
             Instantiate(drop1, enemyPosition.position, Quaternion.identity);
+
         }
         else if (15 > rnd && rnd >= 10)
         {
