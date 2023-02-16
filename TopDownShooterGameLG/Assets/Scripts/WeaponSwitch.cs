@@ -13,10 +13,16 @@ public class WeaponSwitch : MonoBehaviour
 
     int weaponId = 0;
 
+    bool shotgunActive;
+    bool sniperActive;
+    bool smgActive;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        shotgunActive = false;
+        sniperActive = false;
+        smgActive = false;
     }
 
     // Update is called once per frame
@@ -27,7 +33,7 @@ public class WeaponSwitch : MonoBehaviour
         {
             weaponId++;
         }
-
+        
         if (weaponId == 0)
         {
             weapon1.SetActive(true);
@@ -35,32 +41,63 @@ public class WeaponSwitch : MonoBehaviour
             weapon3.SetActive(false);
             weapon4.SetActive(false);
         }
-        if (weaponId == 1)
+        while (shotgunActive == true)
         {
-            weapon1.SetActive(false);
-            weapon2.SetActive(true);
-            weapon3.SetActive(false);
-            weapon4.SetActive(false);
+            if (weaponId == 1)
+            {
+                weapon1.SetActive(false);
+                weapon2.SetActive(true);
+                weapon3.SetActive(false);
+                weapon4.SetActive(false);
 
+            }
         }
-        if (weaponId == 2)
+        while (smgActive == true)
         {
-            weapon1.SetActive(false);
-            weapon2.SetActive(false);
-            weapon3.SetActive(true);
-            weapon4.SetActive(false);
+            if (weaponId == 2)
+            {
+                weapon1.SetActive(false);
+                weapon2.SetActive(false);
+                weapon3.SetActive(true);
+                weapon4.SetActive(false);
+            }
         }
-        if (weaponId == 3)
+
+        while (sniperActive == true)
         {
-            weapon1.SetActive(false);
-            weapon2.SetActive(false);
-            weapon3.SetActive(false);
-            weapon4.SetActive(true);
+            if (weaponId == 3)
+            {
+                weapon1.SetActive(false);
+                weapon2.SetActive(false);
+                weapon3.SetActive(false);
+                weapon4.SetActive(true);
+            }
         }
+        
         if (weaponId == 4)
         {
             weaponId = 0;
         }
 
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Shotgun")
+        {
+            Debug.Log("Shotgun Picked Up!");
+            shotgunActive = true;
+        }
+        if (other.gameObject.tag == "Sniper")
+        {
+            Debug.Log("Sniper Picked Up!");
+            sniperActive = true;
+        }
+        if (other.gameObject.tag == "Smg")
+        {
+            Debug.Log("SMG Picked up!");
+            smgActive = true;
+        }
+    }
+
 }
