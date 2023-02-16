@@ -31068,7 +31068,7 @@ MonoBehaviour:
   isDashing: 0
   dash: 0
   invincibilityTime: 0.5
-  dashColor: {r: 0.7176471, g: 0.7176471, b: 0.7176471, a: 0}
+  dashColor: {r: 0.7176471, g: 0.7176471, b: 0.7176471, a: 1}
   hurtColor: {r: 1, g: 0.32941177, b: 0.32941177, a: 1}
   rigidbodyComponent: {fileID: 921387757}
   bounceSpeed: 10
