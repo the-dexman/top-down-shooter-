@@ -104,7 +104,7 @@ public class ProcedualLevelEnemyMovement : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Wall")
         {
             Vector3 vectorToCollision = other.gameObject.transform.position - transform.position;
             transform.Translate(new Vector3(-vectorToCollision.x * Time.deltaTime, -vectorToCollision.y * Time.deltaTime, 0));
