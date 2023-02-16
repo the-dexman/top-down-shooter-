@@ -7820,6 +7820,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2530707465313533900, guid: 6a912d4400aaa2d4597c9403cd16945d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ba1d10fc27ecb434c981d4f4b730f79a, type: 2}
+    - target: {fileID: 2530707465330756324, guid: 6a912d4400aaa2d4597c9403cd16945d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1b7bfcabd7f01414d93911669c0bd2f9, type: 2}
+    - target: {fileID: 2530707466738651116, guid: 6a912d4400aaa2d4597c9403cd16945d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1b7bfcabd7f01414d93911669c0bd2f9, type: 2}
     - target: {fileID: 2530707466870758178, guid: 6a912d4400aaa2d4597c9403cd16945d, type: 3}
       propertyPath: m_RootOrder
       value: 3
