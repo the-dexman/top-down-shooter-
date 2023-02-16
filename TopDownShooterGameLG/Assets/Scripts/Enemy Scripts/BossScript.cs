@@ -23,6 +23,7 @@ public class BossScript : MonoBehaviour
         if (enemyMovement.enemyHealth <= 0)
         {
             enemyMovement.animator.SetInteger("animationID", 2);
+            //Instantiate(//portal to win screen, on transform.position)
             Destroy(this);
         }
 
