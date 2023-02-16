@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPosition: {fileID: 3056542353983331297}
-  randomExtraSpawnDistance: 10
+  randomExtraSpawnDistance: 7
   enemyTypes:
   - {fileID: 7334459716673095599, guid: 40b6ee4ecda6b25468e3c1e07aa9953e, type: 3}
   - {fileID: 2281554046858520080, guid: e898e8b8f4c7a1b4497251d026ea79dd, type: 3}
