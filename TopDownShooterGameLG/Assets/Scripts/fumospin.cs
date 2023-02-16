@@ -9,7 +9,6 @@ public class fumospin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float youAreRacist = transform.rotation.y;
         gameObject.transform.Rotate(0, spinSpeed * Time.deltaTime, 0);
     }
 }

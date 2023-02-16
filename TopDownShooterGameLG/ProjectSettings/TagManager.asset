@@ -8,6 +8,7 @@ TagManager:
   - Bullet
   - Room
   - LevelGenerator
+  - Wall
   layers:
   - Default
   - TransparentFX

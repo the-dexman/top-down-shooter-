@@ -11,6 +11,8 @@ public class SpawnTile : MonoBehaviour
         // int random = Random.Range(0, tileObjects.Length);
         // instantiatedObject = Instantiate(tileObjects[random], transform.position, Quaternion.identity, gameObject.transform);
         gameObject.tag = "Enemy";
+        BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
+        boxCollider.isTrigger = true;
     }
 
 }

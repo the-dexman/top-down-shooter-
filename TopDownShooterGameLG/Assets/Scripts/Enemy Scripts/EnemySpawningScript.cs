@@ -7,7 +7,7 @@ public class EnemySpawningScript : MonoBehaviour
     public Transform playerTransform;
     public Camera mainCamera;
     public float spawnDistance;
-    public float randomExtraSpawnDistance;
+    float randomExtraSpawnDistance = 5;
     float spawnTimer;
     float spawnTimerLength;
     public float spawnTimerLengthMinimum;
