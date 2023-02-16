@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponSwitch : MonoBehaviour
-{
+{ 
     public GameObject weapon1;
     public GameObject weapon2;
     public GameObject weapon3;
@@ -33,7 +33,7 @@ public class WeaponSwitch : MonoBehaviour
         {
             weaponId++;
         }
-        
+
         if (weaponId == 0)
         {
             weapon1.SetActive(true);
@@ -41,39 +41,38 @@ public class WeaponSwitch : MonoBehaviour
             weapon3.SetActive(false);
             weapon4.SetActive(false);
         }
-        while (shotgunActive == true)
-        {
-            if (weaponId == 1)
-            {
-                weapon1.SetActive(false);
-                weapon2.SetActive(true);
-                weapon3.SetActive(false);
-                weapon4.SetActive(false);
 
-            }
-        }
-        while (smgActive == true)
+
+        if (weaponId == 1 && sniperActive == true)
         {
-            if (weaponId == 2)
-            {
-                weapon1.SetActive(false);
-                weapon2.SetActive(false);
-                weapon3.SetActive(true);
-                weapon4.SetActive(false);
-            }
+            weapon1.SetActive(false);
+            weapon2.SetActive(true);
+            weapon3.SetActive(false);
+            weapon4.SetActive(false);
+
         }
 
-        while (sniperActive == true)
+
+
+        if (weaponId == 2 && shotgunActive == true)
         {
-            if (weaponId == 3)
-            {
-                weapon1.SetActive(false);
-                weapon2.SetActive(false);
-                weapon3.SetActive(false);
-                weapon4.SetActive(true);
-            }
+            weapon1.SetActive(false);
+            weapon2.SetActive(false);
+            weapon3.SetActive(true);
+            weapon4.SetActive(false);
         }
-        
+
+
+
+        if (weaponId == 3 && smgActive == true)
+        {
+            weapon1.SetActive(false);
+            weapon2.SetActive(false);
+            weapon3.SetActive(false);
+            weapon4.SetActive(true);
+        }
+
+
         if (weaponId == 4)
         {
             weaponId = 0;
@@ -87,16 +86,19 @@ public class WeaponSwitch : MonoBehaviour
         {
             Debug.Log("Shotgun Picked Up!");
             shotgunActive = true;
+            Destroy(other.gameObject);
         }
         if (other.gameObject.tag == "Sniper")
         {
             Debug.Log("Sniper Picked Up!");
             sniperActive = true;
+            Destroy(other.gameObject);
         }
         if (other.gameObject.tag == "Smg")
         {
             Debug.Log("SMG Picked up!");
             smgActive = true;
+            Destroy(other.gameObject);
         }
     }
 
