@@ -29,8 +29,7 @@ public class BossScript : MonoBehaviour
         if (enemyMovement.enemyHealth < enemyMovement.maxHealth / 2 && phase2 == false)
         {
             enemyMovement.enemyType = 1;
-            enemyMovement.animator.SetInteger("animationID", 2);
-            enemyMovement.animator.Play("BigBossReveal");
+            StartCoroutine(RevealAnimation(revealWaitTime));
             enemyShootScript.enabled = true;
             phase2 = true;
         }
@@ -42,6 +41,11 @@ public class BossScript : MonoBehaviour
     {
         enemyMovement.animator.SetInteger("animationID", 2);
         yield return new WaitForSeconds(delayBeforeMovement);
+        enemyMovement.animator.SetInteger("animationID", 1);
+    }
+
+    void BossDoneShooting()
+    {
         enemyMovement.animator.SetInteger("animationID", 1);
     }
 

@@ -36,6 +36,7 @@ public class EnemyShootScript : MonoBehaviour
                 bullet.transform.LookAt(target);
                 bullet.transform.Rotate(0, 90, Random.Range(-bulletSpread, bulletSpread));
                 animator.Play("EnemyShoot");
+                animator.SetInteger("animationID", -1);
             }
             
 

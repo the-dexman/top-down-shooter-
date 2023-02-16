@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 13c262ae39d7fbe40a678cedc3bf2351
+guid: 2161fad5c2423214e853a20dd9485906
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 240
+  spritePixelsToUnits: 204.8
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: boss shoot lower reselution_0
+      name: Explsion_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 7200
-        width: 2620
-        height: 2400
+        y: 2048
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,20 +119,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 998f99a9a04f9d94983361ecd56ce5c2
-      internalID: 349046239
+      spriteID: 5d9204a05c771214487ba49e51b28131
+      internalID: 1878145301
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boss shoot lower reselution_1
+      name: Explsion_1
       rect:
         serializedVersion: 2
-        x: 2620
-        y: 7200
-        width: 2620
-        height: 2400
+        x: 1024
+        y: 2048
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,41 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a170667184cc9345ac8bec2008db138
-      internalID: -1435521105
+      spriteID: 4ca64f5fa16248d48b2d59821cece97c
+      internalID: -440931049
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boss shoot lower reselution_2
-      rect:
-        serializedVersion: 2
-        x: 5240
-        y: 7200
-        width: 2620
-        height: 2400
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5bc34796c61ffd24fb2cc81c25557f3c
-      internalID: 1236533020
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: boss shoot lower reselution_3
+      name: Explsion_2
       rect:
         serializedVersion: 2
         x: 0
-        y: 4800
-        width: 2620
-        height: 2400
+        y: 1024
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,20 +161,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8d91890df70096409b976502760a80b
-      internalID: -464389717
+      spriteID: 92a2b2c06835d38408cb54e8dbf92e2d
+      internalID: 241222070
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boss shoot lower reselution_4
+      name: Explsion_3
       rect:
         serializedVersion: 2
-        x: 2620
-        y: 4800
-        width: 2620
-        height: 2400
+        x: 1024
+        y: 1024
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,104 +182,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc8f8d7d06c56ce49be8e0fef0ae11fe
-      internalID: -405516759
+      spriteID: 8d87b3c66f9ba5749a7e45f13b9d167f
+      internalID: -1874744672
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boss shoot lower reselution_5
-      rect:
-        serializedVersion: 2
-        x: 5240
-        y: 4800
-        width: 2620
-        height: 2400
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 748176b6a198a8d40a80e6bbb2179533
-      internalID: 305869026
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: boss shoot lower reselution_6
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 2400
-        width: 2620
-        height: 2400
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f07efaebf86ef56449911d8d8f3bab49
-      internalID: 2043504848
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: boss shoot lower reselution_7
-      rect:
-        serializedVersion: 2
-        x: 2620
-        y: 2400
-        width: 2620
-        height: 2400
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fa7ebe581d260fa47b1d17a73b4d4b61
-      internalID: 1449122474
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: boss shoot lower reselution_8
-      rect:
-        serializedVersion: 2
-        x: 5240
-        y: 2400
-        width: 2620
-        height: 2400
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: de5a6c7627fd2b54aaec732e2eca618f
-      internalID: 1522866675
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: boss shoot lower reselution_9
+      name: Explsion_4
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 2620
-        height: 2400
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -308,8 +203,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a7d74533d99fb3c408a53b5bee5634d0
-      internalID: 1775291881
+      spriteID: f856982344550a24caefbbe83a56452f
+      internalID: 1461092520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explsion_5
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 1024
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0802b5f1490f0a64f9eb0cd58dc76e24
+      internalID: 54586247
       vertices: []
       indices: 
       edges: []
@@ -317,7 +233,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: e468eed9711698241a55acea577c555a
+    spriteID: efbd06fdfedf0f9479e9bb297e3f90e6
     internalID: 0
     vertices: []
     indices: 
@@ -325,16 +241,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      boss shoot lower reselution_9: 1775291881
-      boss shoot lower reselution_0: 349046239
-      boss shoot lower reselution_7: 1449122474
-      boss shoot lower reselution_2: 1236533020
-      boss shoot lower reselution_8: 1522866675
-      boss shoot lower reselution_1: -1435521105
-      boss shoot lower reselution_5: 305869026
-      boss shoot lower reselution_6: 2043504848
-      boss shoot lower reselution_4: -405516759
-      boss shoot lower reselution_3: -464389717
+      Explsion_1: -440931049
+      Explsion_4: 1461092520
+      Explsion_2: 241222070
+      Explsion_5: 54586247
+      Explsion_0: 1878145301
+      Explsion_3: -1874744672
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

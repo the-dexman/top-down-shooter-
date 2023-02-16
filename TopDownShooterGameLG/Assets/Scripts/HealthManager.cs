@@ -7,7 +7,7 @@ public class HealthManager : MonoBehaviour
 {
     [SerializeField]
     public int maxHealth;
-    public int playerHealth;
+    internal int playerHealth;
     public int deathSceneID;
     public delegate void PlayerDeath();
     public static PlayerDeath playerDeath;
@@ -16,6 +16,7 @@ public class HealthManager : MonoBehaviour
     void Start()
     {
         PlayerMovement.playerHit += TakeDamage;
+        playerHealth = maxHealth;
     }
 
     // Update is called once per frame

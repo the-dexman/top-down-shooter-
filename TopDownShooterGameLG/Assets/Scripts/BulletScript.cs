@@ -9,6 +9,8 @@ public class BulletScript : MonoBehaviour
     public float bulletSpeed;
     public float bulletDamage;
     public int directionMultiplier;
+    public bool explodeOnDeath;
+    public GameObject explosion;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +27,10 @@ public class BulletScript : MonoBehaviour
 
         if (bulletLifeTimer > bulletLifeTimerLength)
         {
+            if (explodeOnDeath)
+            {
+                Instantiate(explosion, transform.position, transform.rotation);
+            }
             Destroy(gameObject);
         }
     }
