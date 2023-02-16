@@ -15,7 +15,7 @@ public class SelectionManager : MonoBehaviour
     private Button currentButton;
     public GameObject selectionMarker;
     public GameObject creditsScreen;
-    private int currentButtonID = 0;
+    public int currentButtonID = 0;
     public EventSystem eventSystem;
     public int selectorOffset = 500;
 

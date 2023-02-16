@@ -70,7 +70,6 @@ public class PlayerMovement : MonoBehaviour
         upAxis = Input.GetAxisRaw("Vertical");
         rightAxis = Input.GetAxisRaw("Horizontal");
 
-
         if (isDashing)
         { 
             return;

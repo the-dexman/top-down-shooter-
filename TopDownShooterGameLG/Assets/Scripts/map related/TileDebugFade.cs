@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TileDebugFade : MonoBehaviour
@@ -16,6 +17,7 @@ public class TileDebugFade : MonoBehaviour
         Color color = myModel.material.color;
         color.a = 0;
         myModel.material.color = color;
+        BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
     }
 
     // Update is called once per frame
@@ -56,5 +58,24 @@ public class TileDebugFade : MonoBehaviour
         Color color = myModel.material.color;
         color.a -= colourChangeAmount;
         myModel.material.color = color;
+    }
+
+    private void OnAnimatorIK(int layerIndex)
+    {
+
+    }
+    void OnCollissionEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+            Destroy(other.gameObject);
+        }
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+            Destroy(other.gameObject);
+        }
     }
 }
