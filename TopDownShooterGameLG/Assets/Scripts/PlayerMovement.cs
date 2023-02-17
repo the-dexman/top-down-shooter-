@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     //damage variables
     public Rigidbody rigidbodyComponent;
     public float bounceSpeed;
+    bool isColliding = false;
     
 
     //object references
@@ -67,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-
+        isColliding = false;
 
         upAxis = Input.GetAxisRaw("Vertical");
         rightAxis = Input.GetAxisRaw("Horizontal");
@@ -182,7 +183,9 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerStay(Collider collision)
     {
 
-        if (isInvincible == false && this.enabled)
+        
+
+        if (isInvincible == false && isColliding == false)
         {
             if (collision.gameObject.layer == 6)
             {
@@ -196,6 +199,8 @@ public class PlayerMovement : MonoBehaviour
                     Destroy(collision.gameObject);
                 }
             }
+
+            isColliding = true;
         }
         
 
