@@ -198,9 +198,11 @@ public class PlayerMovement : MonoBehaviour
                 {
                     Destroy(collision.gameObject);
                 }
+
+                isColliding = true;
             }
 
-            isColliding = true;
+            
         }
         
 
