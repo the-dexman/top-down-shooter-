@@ -19,6 +19,10 @@ public class SelectionManager : MonoBehaviour
     public EventSystem eventSystem;
     public int selectorOffset = 500;
 
+    public KeyCode upKey;
+    public KeyCode downKey;
+    public KeyCode EnterKey;
+
     //image files
     public GameObject[] mainMenuImages;
 
@@ -34,7 +38,7 @@ public class SelectionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(downKey))
         {
             if (currentButtonID == mainMenuButtons.Length - 1) //if on exit, set to start
             {
@@ -70,7 +74,7 @@ public class SelectionManager : MonoBehaviour
                 }
             }
         }
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(upKey))
         {
             if (currentButtonID == 0)//if on start then make to exit
             {
@@ -115,7 +119,7 @@ public class SelectionManager : MonoBehaviour
         // selectionMarker.transform.position = new Vector3(currentButtonPos.x -selectionOffset, currentButtonPos.y, currentButtonPos.z);
         selectionMarker.transform.position = new Vector3(selectionMarker.transform.position.x, currentButtonPos.y, currentButtonPos.z);
             
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(EnterKey))
         {
             currentButton.onClick.Invoke();
             
