@@ -10,7 +10,6 @@ public class EnemySpawningScript : MonoBehaviour
     float randomExtraSpawnDistance = 5;
     float spawnTimer;
     float spawnTimerLength;
-    bool isInRoom;
     public float spawnTimerLengthMinimum;
     public float spawnTimerLengthMax;
     public GameObject[] enemyTypes;
@@ -33,15 +32,16 @@ public class EnemySpawningScript : MonoBehaviour
 
         if (spawnTimer > spawnTimerLength )
         {
-            FindNewSpawnLocation();
-            if (isInRoom)
+            
+            if (canSpawn)
             {
                 int random = Random.Range(0, enemyTypes.Length);
                 Instantiate(enemyTypes[random], transform.position, Quaternion.identity);
                 spawnTimerLength = Random.Range(spawnTimerLengthMinimum, spawnTimerLengthMax);
                 spawnTimer = 0;
             }
-            
+            FindNewSpawnLocation();
+
 
         }
     }
@@ -68,7 +68,12 @@ public class EnemySpawningScript : MonoBehaviour
     {
         if (other.gameObject.tag == "Room")
         {
-            isInRoom = true;
+            canSpawn = true;
+        }
+        if (other.gameObject.tag == "NoSpawn")
+        {
+            canSpawn = false;
+
         }
 
     }
@@ -76,7 +81,7 @@ public class EnemySpawningScript : MonoBehaviour
     {
         if (other.gameObject.tag == "Room")
         {
-            isInRoom = false;
+            canSpawn = false;
         }
 
     }

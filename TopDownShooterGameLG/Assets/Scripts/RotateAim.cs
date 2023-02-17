@@ -18,7 +18,7 @@ public class RotateAim : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        HealthManager.playerDeath += RemoveGun;
     }
 
     // Update is called once per frame
@@ -71,5 +71,9 @@ public class RotateAim : MonoBehaviour
 
 
 
+    }
+    void RemoveGun()
+    {
+        gameObject.SetActive(false);
     }
 }

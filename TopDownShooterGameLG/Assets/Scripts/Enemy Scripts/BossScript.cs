@@ -6,8 +6,11 @@ public class BossScript : MonoBehaviour
 {
     EnemyMovement enemyMovement;
     EnemyShootScript enemyShootScript;
-    public float revealWaitTime;    
+    public float revealWaitTime;
+    public GameObject portalObject;
     bool phase2 = false;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +25,8 @@ public class BossScript : MonoBehaviour
     {
         if (enemyMovement.enemyHealth <= 0)
         {
-            enemyMovement.animator.SetInteger("animationID", 2);
+            enemyMovement.animator.SetInteger("animationID", -1);
+            Instantiate(portalObject, transform.position, transform.rotation);
             Destroy(this);
         }
 

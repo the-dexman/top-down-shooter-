@@ -11,7 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/JonahScene.unity
     guid: 1ff18115e2ba9224bbb7b7d52ffd3eea
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Death.unity
+    guid: bd9fab2a03c67744ba8a4126fa381cb8
+  - enabled: 1
+    path: Assets/Scenes/Victory.unity
+    guid: cc4972bb37e684a41a1fb725129b38b5
   m_configObjects: {}

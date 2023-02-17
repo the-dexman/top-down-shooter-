@@ -95,8 +95,8 @@ public class LevelGenerator : MonoBehaviour
                 direction = Random.Range(3, 6);
 
                 int random = Random.Range(0, roomVariants.Length);
-                int random2 = Random.Range(0, 1001);
-                if (random == 2)
+                int random2 = Random.Range(0, 101);
+                if (random2 == 2)
                 {
                     lastRoom = Instantiate(fumoRoom, transform.position, Quaternion.identity);
                     lastRoomType = 2;

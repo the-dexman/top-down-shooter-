@@ -20,6 +20,9 @@ public class Shoot : MonoBehaviour
 
     public KeyCode shoot;
 
+    public AudioClip shootSound;
+    AudioSource audioSource;
+
     [SerializeField]
     private float fireRate = 3.0f;
     private float timer;
@@ -32,6 +35,11 @@ public class Shoot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (gameObject.GetComponent<AudioSource>() == null)
+        {
+            gameObject.AddComponent<AudioSource>();
+        }
+        audioSource = gameObject.GetComponent<AudioSource>();
         timer = 0f;
     }
 
@@ -60,7 +68,9 @@ public class Shoot : MonoBehaviour
                 else
                 {
                     myProjectile = Instantiate(projectile, transform.position, transform.rotation) as GameObject; //transform.position gör så att 
-
+                    audioSource.clip = shootSound;
+                    audioSource.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
+                    audioSource.Play();
                     timer = fireRate;
                     shootDelay = true;
 

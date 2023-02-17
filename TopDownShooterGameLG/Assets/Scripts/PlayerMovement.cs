@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -11,8 +12,9 @@ public class PlayerMovement : MonoBehaviour
     public float dashingCooldown = 1f;
     public bool canDash = true;
     public bool isDashing = false;
-    public KeyCode dash;
-    
+    public KeyCode dashArcade;
+    public KeyCode dashKeyboard;
+
 
     //invincibility variables
     public float invincibilityTime;
@@ -127,8 +129,9 @@ public class PlayerMovement : MonoBehaviour
         }
 		
 
-        if (Input.GetKey(KeyCode.LeftShift) && canDash)
+        if (Input.GetKey(dashArcade) || Input.GetKeyDown(dashKeyboard) && canDash)
         {
+            gameObject.GetComponent<PlayAudio>().PlaySound(2);
             StartCoroutine(Dash());
         }
 
@@ -139,6 +142,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetInteger("AnimationID", -1);
         animator.Play("PlayerDeath");
         spriteRenderer.color = Color.white;
+        
         gameObject.GetComponent<PlayerMovement>().enabled = false;
     }
 
@@ -163,6 +167,8 @@ public class PlayerMovement : MonoBehaviour
         canDash = true;
     }
 
+
+
     private IEnumerator InvincibilityFrames(float time, Color color)
     {
         isInvincible = true;
@@ -181,6 +187,8 @@ public class PlayerMovement : MonoBehaviour
             if (collision.gameObject.layer == 6)
             {
                 playerHit(collision.gameObject.transform);
+
+                gameObject.GetComponent<PlayAudio>().PlaySound(1);
                 StartCoroutine(InvincibilityFrames(invincibilityTime, hurtColor));
 
                 if (collision.gameObject.tag == "Bullet")

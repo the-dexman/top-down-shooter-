@@ -34,4 +34,14 @@ public class BulletScript : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Enemy" && gameObject.layer == 3)
+        {
+            other.gameObject.GetComponent<EnemyMovement>().enemyHealth -= bulletDamage;
+            other.gameObject.GetComponent<EnemyMovement>().OnHurt();
+            Destroy(this.gameObject);
+        }
+    }
 }

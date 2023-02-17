@@ -9,16 +9,20 @@ public class antiSoftLock : MonoBehaviour
     public float changeValue;
     void OnTriggerStay(Collider other)
     {
-        if (xValue)
+        if (other.gameObject.layer == 6)
         {
-            Vector3 posChange = new Vector3(changeValue, 0, 0);
-            other.transform.position += posChange;
+            if (xValue)
+            {
+                Vector3 posChange = new Vector3(changeValue, 0, 0);
+                other.transform.position += posChange;
+            }
+            else if (yValue)
+            {
+                Vector3 posChange = new Vector3(0, changeValue, 0);
+                other.transform.position += posChange;
+            }
         }
-        else if (yValue)
-        {
-            Vector3 posChange = new Vector3(0, changeValue, 0);
-            other.transform.position += posChange;
-        }
+        
         
     }
 }

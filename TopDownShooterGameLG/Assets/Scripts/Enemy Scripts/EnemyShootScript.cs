@@ -13,6 +13,7 @@ public class EnemyShootScript : MonoBehaviour
     public GameObject bulletObject;
     public Transform shootPoint;
     Animator animator;
+    public AudioClip[] shootSounds;
 
 
     public float bulletSpread;
@@ -38,6 +39,8 @@ public class EnemyShootScript : MonoBehaviour
                 animator.Play("EnemyShoot");
                 animator.SetInteger("animationID", -1);
             }
+
+            gameObject.GetComponent<EnemyMovement>().PlaySound(shootSounds);
             
 
             shootTimer = 0;

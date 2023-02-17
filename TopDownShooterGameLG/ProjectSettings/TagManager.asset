@@ -9,6 +9,11 @@ TagManager:
   - Room
   - LevelGenerator
   - Wall
+  - medkit
+  - Shotgun
+  - Smg
+  - Sniper
+  - NoSpawn
   layers:
   - Default
   - TransparentFX

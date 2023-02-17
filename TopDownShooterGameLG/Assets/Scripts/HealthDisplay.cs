@@ -31,7 +31,7 @@ public class HealthDisplay : MonoBehaviour
         for (int i = 0; i < healthManager.maxHealth; i++)
         {
 
-            if (healthManager.playerHealth >= i + 1)
+            if (HealthManager.playerHealth >= i + 1)
             {
                 spawnedHearts[i] = Instantiate(fullHeart, transform.parent);
             }

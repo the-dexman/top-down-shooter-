@@ -46,7 +46,6 @@ GameObject:
   - component: {fileID: 2281554046858520107}
   - component: {fileID: 2281554046858520106}
   - component: {fileID: 1241359443839455540}
-  - component: {fileID: 2678181667901103559}
   - component: {fileID: -5597720921132658236}
   - component: {fileID: 6915743431881355076}
   m_Layer: 6
@@ -80,7 +79,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2281554046858520080}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.0534353, y: 1.5653658, z: 1}
@@ -105,13 +104,16 @@ MonoBehaviour:
   deathColor: {r: 0.6156863, g: 0.6156863, b: 0.6156863, a: 1}
   hurtColor: {r: 1, g: 0.32941177, b: 0.32941177, a: 1}
   hurtTime: 0.2
-  ambientTimerLength: 7
+  ambientTimerLengthMin: 10
+  ambientTimerLengthMax: 25
   deathSounds:
   - {fileID: 8300000, guid: 336cb30f050bca14e83a4b22ca2f65c8, type: 3}
   - {fileID: 8300000, guid: b8c11af95490d224fa55f7f307a5499f, type: 3}
   ambientSounds:
   - {fileID: 8300000, guid: 37422e47df9b476448440760da50d36a, type: 3}
   - {fileID: 8300000, guid: 76124d6e1b9afa8478faab2f29e10e0f, type: 3}
+  hurtSounds:
+  - {fileID: 8300000, guid: 92c46f012505a3f4eb1804c60aa20e55, type: 3}
 --- !u!114 &2281554046858520104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +131,8 @@ MonoBehaviour:
   bulletAmount: 1
   bulletObject: {fileID: 6522484152675167849, guid: e8162bb7303e10747bec76c4a1daff7c, type: 3}
   shootPoint: {fileID: 2281554046313485885}
+  shootSounds:
+  - {fileID: 8300000, guid: e2d4dc5349f7869449357cad2610739c, type: 3}
   bulletSpread: 0
 --- !u!212 &2281554046858520107
 SpriteRenderer:
@@ -219,20 +223,6 @@ MonoBehaviour:
   drop3: {fileID: 6203108827013910575, guid: 055cfcd2df6f2294d91d86e7efdbe5af, type: 3}
   drop4: {fileID: 4981351752982628379, guid: a8190f5863ee9044385d9fc5b7f9fcb3, type: 3}
   randomness: 100
---- !u!136 &2678181667901103559
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2281554046858520080}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.6559241
-  m_Height: 2.054975
-  m_Direction: 1
-  m_Center: {x: 0.6287687, y: -0.6589503, z: 0}
 --- !u!54 &-5597720921132658236
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -247,7 +237,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!82 &6915743431881355076
 AudioSource:
@@ -261,7 +251,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.499
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -7,10 +7,12 @@ public class HealthManager : MonoBehaviour
 {
     [SerializeField]
     public int maxHealth;
-    internal int playerHealth;
+    public static int playerHealth;
+    public float deathDelay;
     public int deathSceneID;
     public delegate void PlayerDeath();
     public static PlayerDeath playerDeath;
+    bool hasHealed;
 
     // Start is called before the first frame update
     void Start()
@@ -22,10 +24,12 @@ public class HealthManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        hasHealed = false;
         if (playerHealth <= 0)
         {
             Debug.Log("DEATH");
             playerDeath.Invoke();
+            StartCoroutine(DeathDelay());
             this.enabled = false;
         }
     }
@@ -37,9 +41,14 @@ public class HealthManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (hasHealed)
+        {
+            return;
+        }
+        hasHealed = true;
         if (other.gameObject.tag == "medkit")
         {
-            if (maxHealth!= playerHealth)
+            if (maxHealth != playerHealth)
             {
                 playerHealth++;
                 Debug.Log("HEALED");
@@ -47,5 +56,11 @@ public class HealthManager : MonoBehaviour
             }
             
         }
+    }
+
+    private IEnumerator DeathDelay()
+    {
+        yield return new WaitForSeconds(deathDelay);
+        SceneManager.LoadScene(deathSceneID);
     }
 }

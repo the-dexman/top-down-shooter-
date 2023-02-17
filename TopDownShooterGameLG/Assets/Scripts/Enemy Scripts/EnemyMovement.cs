@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -18,21 +17,22 @@ public class EnemyMovement : MonoBehaviour
     public Color deathColor;
     public Color hurtColor;
     public float hurtTime;
-    public float ambientTimerLength;
+    public float ambientTimerLengthMin;
+    public float ambientTimerLengthMax;
+    float ambientTimerLength;
     float ambientTimer;
     SpriteRenderer spriteRenderer;
     AudioSource audioSource;
-
     Vector3 playerDirection;
 
     public AudioClip[] deathSounds;
     public AudioClip[] ambientSounds;
+    public AudioClip[] hurtSounds;
     // Start is called before the first frame update
     void Start()
     {
         playerObject = GameObject.FindGameObjectWithTag("Player");
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        HealthManager.playerDeath += PlayerDied;
         animator = GetComponent<Animator>();
         enemyHealth = maxHealth;
 
@@ -40,17 +40,33 @@ public class EnemyMovement : MonoBehaviour
 
         getItem = GetComponent<EnemyDrop>();
 
-        Physics.IgnoreCollision(gameObject.GetComponent<CapsuleCollider>(), playerObject.GetComponent<CapsuleCollider>(), true);
+        Physics.IgnoreCollision(gameObject.GetComponent<BoxCollider>(), playerObject.GetComponent<CapsuleCollider>(), true);
+        ambientTimerLength = Random.Range(ambientTimerLengthMin, ambientTimerLengthMax);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (HealthManager.playerHealth <= 0)
+        {
+            if (gameObject.GetComponent<EnemyShootScript>() != null)
+            {
+                Destroy(gameObject.GetComponent<EnemyShootScript>());
+
+            }
+
+            Destroy(this);
+        }
+
+
+        transform.position = new Vector3(transform.position.x, transform.position.y, playerObject.transform.position.z);
+
         ambientTimer += Time.deltaTime;
         if (ambientTimer >= ambientTimerLength)
         {
-            audioSource.clip = ambientSounds[Random.Range(0, ambientSounds.Length)];
-            audioSource.Play();
+            PlaySound(ambientSounds);
+            ambientTimer = 0;
+            ambientTimerLength = Random.Range(ambientTimerLengthMin, ambientTimerLengthMax);
         }
 
         if (enemyHealth <= 0)
@@ -61,8 +77,7 @@ public class EnemyMovement : MonoBehaviour
                 getItem.MobDrops();
                 
             }
-            audioSource.clip = deathSounds[Random.Range(0, deathSounds.Length)];
-            audioSource.Play();
+            PlaySound(deathSounds);
 
             if (gameObject.GetComponent<EnemyShootScript>() != null)
             {
@@ -71,7 +86,6 @@ public class EnemyMovement : MonoBehaviour
             }
             gameObject.GetComponent<SpriteRenderer>().color = deathColor;
             Destroy(gameObject.GetComponent<BoxCollider>());
-            Destroy(gameObject.GetComponent<CapsuleCollider>());
             animator.SetInteger("animationID", -1);
             animator.Play("EnemyDeath");
             Destroy(this);
@@ -106,10 +120,6 @@ public class EnemyMovement : MonoBehaviour
         
 
     }
-    void PlayerDied()
-    {
-        this.enabled = false;
-    }
 
     void BasicMeleeEnemy()
     {
@@ -128,17 +138,13 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    internal void OnHurt()
     {
-        if (other.gameObject.tag == "Bullet" && other.gameObject.layer == 3)
-        {
-            enemyHealth -= other.gameObject.GetComponent<BulletScript>().bulletDamage;
-            StartCoroutine(FlashRed());
-            Destroy(other.gameObject);
-        }
+        StartCoroutine(FlashRed());
+        PlaySound(hurtSounds);
     }
 
-    private IEnumerator FlashRed()
+    internal IEnumerator FlashRed()
     {
         spriteRenderer.color = hurtColor;
 
@@ -146,6 +152,11 @@ public class EnemyMovement : MonoBehaviour
         spriteRenderer.color = Color.white;
     }
 
-
+    internal void PlaySound(AudioClip[] soundArray)
+    {
+        audioSource.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
+        audioSource.clip = soundArray[Random.Range(0, soundArray.Length)];
+        audioSource.Play();
+    }
 
 }

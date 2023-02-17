@@ -9,7 +9,8 @@ public class WeaponSwitch : MonoBehaviour
     public GameObject weapon3;
     public GameObject weapon4;
 
-    public KeyCode switchWeapon;
+    public KeyCode switchWeaponArcade;
+    public KeyCode switchWeaponKeyboard;
 
     int weaponId = 0;
 
@@ -29,7 +30,7 @@ public class WeaponSwitch : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(switchWeapon))
+        if (Input.GetKeyDown(switchWeaponArcade) || Input.GetKeyDown(switchWeaponKeyboard))
         {
             weaponId++;
         }
