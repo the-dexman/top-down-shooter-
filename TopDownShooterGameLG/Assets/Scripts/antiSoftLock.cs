@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class antiSoftLock : MonoBehaviour
 {
+    /*
     public bool xValue;
     public bool yValue;
     public float changeValue;
@@ -25,4 +26,5 @@ public class antiSoftLock : MonoBehaviour
         
         
     }
+    */
 }

@@ -13,6 +13,7 @@ public class LevelGenerator : MonoBehaviour
     public GameObject player;
     public GameObject bossRoom;
     public GameObject fumoRoom;
+    public GameObject controlInstructions;
     int lastRoomType;
     /*
      * index 0 = LR
@@ -40,6 +41,8 @@ public class LevelGenerator : MonoBehaviour
         Instantiate(roomVariants[1], transform.position, Quaternion.identity); //spawns in prefab from a prefab array at current gameobjects position and gives no rotation
         Vector3 playerPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1.25f);
         player.transform.position = playerPosition;
+        playerPosition = new Vector3(transform.position.x, transform.position.y, -1);
+        Instantiate(controlInstructions, playerPosition, Quaternion.identity);
         
         direction = Random.Range(1, 5); //gives direction a random number from 1 to 5
     }

@@ -43636,6 +43636,7 @@ MonoBehaviour:
   player: {fileID: 0}
   bossRoom: {fileID: 5319812591237124339, guid: 3aec73371d38be242a91587b668cadb9, type: 3}
   fumoRoom: {fileID: 4653530116332009144, guid: a880b63fd296eea48a9cde632bb8af95, type: 3}
+  controlInstructions: {fileID: 6637713081038287626, guid: b2a833f3d29710d43b9291d65d7e44ae, type: 3}
   direction: 0
   startTimeBetweenRooms: 0.1
   minimumX: 0
@@ -75163,9 +75164,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f114cdafb172a64d85ecaab5d52cda9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xValue: 1
-  yValue: 0
-  changeValue: -1
 --- !u!65 &2530707465513277019
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -80943,9 +80941,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f114cdafb172a64d85ecaab5d52cda9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xValue: 1
-  yValue: 0
-  changeValue: 1
 --- !u!4 &2530707465761267992
 Transform:
   m_ObjectHideFlags: 0
@@ -82654,9 +82649,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f114cdafb172a64d85ecaab5d52cda9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xValue: 0
-  yValue: 1
-  changeValue: -1
 --- !u!1 &2530707465850600901
 GameObject:
   m_ObjectHideFlags: 0

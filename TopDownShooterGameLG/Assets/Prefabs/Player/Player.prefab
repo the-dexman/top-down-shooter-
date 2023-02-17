@@ -1082,6 +1082,7 @@ MonoBehaviour:
   rightKey: 100
   upKey: 119
   downKey: 115
+  pausemenu: {fileID: 6946639530471929502, guid: 43138491fffca1f4ab33d416d3712593, type: 3}
 --- !u!95 &2111499670379060796
 Animator:
   serializedVersion: 4
@@ -1129,7 +1130,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!136 &2068430279539607597
 CapsuleCollider:
