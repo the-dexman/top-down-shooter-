@@ -54,7 +54,6 @@ public class PlayerMovement : MonoBehaviour
         
 
         //add functions to delegates
-        HealthManager.playerDeath += OnDeath;
         playerHit += PlayerHitReaction;
 
         //initializing objects
@@ -77,6 +76,8 @@ public class PlayerMovement : MonoBehaviour
         { 
             return;
         }
+
+        
 		
 		
 		 Vector3 playerMovement = new Vector3(rightAxis, upAxis, 0);
@@ -136,16 +137,21 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(Dash());
         }
 
+
+        if (HealthManager.playerHealth <= 0)
+        {
+            Debug.Log("player is dead");
+            animator.SetInteger("AnimationID", -1);
+            animator.Play("PlayerDeath");
+            spriteRenderer.color = Color.white;
+
+            transform.GetChild(0).gameObject.SetActive(false); 
+
+            enabled = false;
+        }
     }
 
-    void OnDeath()
-    {
-        animator.SetInteger("AnimationID", -1);
-        animator.Play("PlayerDeath");
-        spriteRenderer.color = Color.white;
-        
-        gameObject.GetComponent<PlayerMovement>().enabled = false;
-    }
+
 
     void PlayerHitReaction(Transform enemyHitTransform)
     {
@@ -170,10 +176,11 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    private IEnumerator InvincibilityFrames(float time, Color color)
+    IEnumerator InvincibilityFrames(float time, Color color)
     {
         isInvincible = true;
         spriteRenderer.color = color;
+        Debug.Log("Invincible");
         yield return new WaitForSeconds(time);
         spriteRenderer.color = Color.white;
         isInvincible = false;
@@ -183,13 +190,12 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerStay(Collider collision)
     {
 
-        
-
         if (isInvincible == false && isColliding == false)
         {
             if (collision.gameObject.layer == 6)
             {
-                playerHit(collision.gameObject.transform);
+                
+                Debug.Log("player hit");
 
                 gameObject.GetComponent<PlayAudio>().PlaySound(1);
                 StartCoroutine(InvincibilityFrames(invincibilityTime, hurtColor));
@@ -199,7 +205,10 @@ public class PlayerMovement : MonoBehaviour
                     Destroy(collision.gameObject);
                 }
 
+
                 isColliding = true;
+                
+                playerHit(collision.gameObject.transform);
             }
 
             

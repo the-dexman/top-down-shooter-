@@ -85,6 +85,7 @@ public class EnemyMovement : MonoBehaviour
                 
             }
             gameObject.GetComponent<SpriteRenderer>().color = deathColor;
+            gameObject.GetComponent<SpriteRenderer>().sortingOrder = 0;
             Destroy(gameObject.GetComponent<BoxCollider>());
             animator.SetInteger("animationID", -1);
             animator.Play("EnemyDeath");

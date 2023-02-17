@@ -13,6 +13,7 @@ public class HealthManager : MonoBehaviour
     public delegate void PlayerDeath();
     public static PlayerDeath playerDeath;
     bool hasHealed;
+    bool isDead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,13 +25,16 @@ public class HealthManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(playerHealth);
+
         hasHealed = false;
-        if (playerHealth <= 0)
+
+        if (playerHealth <= 0 && isDead == false)
         {
             Debug.Log("DEATH");
-            playerDeath.Invoke();
             StartCoroutine(DeathDelay());
-            this.enabled = false;
+
+            isDead = true;
         }
     }
 

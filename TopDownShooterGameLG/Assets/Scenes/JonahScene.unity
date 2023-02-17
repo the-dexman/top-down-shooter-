@@ -63285,8 +63285,8 @@ MonoBehaviour:
   playerTransform: {fileID: 2397427134872720399}
   mainCamera: {fileID: 1603942591}
   spawnDistance: 12.7
-  spawnTimerLengthMinimum: 5
-  spawnTimerLengthMax: 10
+  spawnTimerLengthMinimum: 4
+  spawnTimerLengthMax: 8
   enemyTypes:
   - {fileID: 7334459716673095599, guid: 31128d93fa6d4744fb6f349122a5e636, type: 3}
   - {fileID: 2281554046858520080, guid: 4c7368c29f3cbfc44b9605651b5a7943, type: 3}
@@ -120233,7 +120233,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 1016069568, guid: ca1f688f063198c4bbbf88aa6fbfe3e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
