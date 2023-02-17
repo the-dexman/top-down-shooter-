@@ -120782,6 +120782,7 @@ MonoBehaviour:
   rightKey: 100
   upKey: 119
   downKey: 115
+  pausemenu: {fileID: 6946639530471929502, guid: 43138491fffca1f4ab33d416d3712593, type: 3}
 --- !u!114 &7325484059640473035
 MonoBehaviour:
   m_ObjectHideFlags: 0

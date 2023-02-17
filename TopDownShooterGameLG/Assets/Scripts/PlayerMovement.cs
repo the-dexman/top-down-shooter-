@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody rigidbodyComponent;
     public float bounceSpeed;
     bool isColliding = false;
-    
+
 
     //object references
     BoxCollider boxCollider;
@@ -45,14 +45,14 @@ public class PlayerMovement : MonoBehaviour
     //delegates
     public delegate void PlayerHit(Transform enemyHitTransform);
     public static PlayerHit playerHit;
-    
+
 
     // Start is called before the first frame update oui oui tr�s bien
     void Start()
     {
         Instantiate(pausemenu, transform.position, Quaternion.identity);
         rigidbodyComponent.useGravity = false;
-        
+
 
         //add functions to delegates
         playerHit += PlayerHitReaction;
@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
         rightAxis = Input.GetAxisRaw("Horizontal");
 
         if (isDashing)
-        { 
+        {
             return;
         }
 
@@ -83,23 +83,10 @@ public class PlayerMovement : MonoBehaviour
         {
 
 
-        if (Input.GetKey(dashArcade) || Input.GetKeyDown(dashKeyboard) && canDash)
-        {
-            gameObject.GetComponent<PlayAudio>().PlaySound(2);
-            StartCoroutine(Dash());
-        }
+            
 
 
-        if (HealthManager.playerHealth <= 0)
-        {
-            Debug.Log("player is dead");
-            animator.SetInteger("AnimationID", -1);
-            animator.Play("PlayerDeath");
-            spriteRenderer.color = Color.white;
-
-            transform.GetChild(0).gameObject.SetActive(false); 
-
-            enabled = false;
+            
             Vector3 playerMovement = new Vector3(rightAxis, upAxis, 0);
 
             gameObject.transform.Translate(playerMovement.normalized * speed * Time.deltaTime, Space.World);
@@ -150,12 +137,24 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetInteger("AnimationID", 0);
             }
 
-
-            if (Input.GetKey(KeyCode.LeftShift) && canDash)
+            if (HealthManager.playerHealth <= 0)
             {
+                Debug.Log("player is dead");
+                animator.SetInteger("AnimationID", -1);
+                animator.Play("PlayerDeath");
+                spriteRenderer.color = Color.white;
+
+                transform.GetChild(0).gameObject.SetActive(false);
+
+                enabled = false;
+            }
+
+            if (Input.GetKey(dashArcade) || Input.GetKeyDown(dashKeyboard) && canDash)
+            {
+                gameObject.GetComponent<PlayAudio>().PlaySound(2);
                 StartCoroutine(Dash());
             }
-        }
+
         }
     }
 
@@ -167,9 +166,10 @@ public class PlayerMovement : MonoBehaviour
         directionToEnemy.z = 0;
 
         gameObject.GetComponent<Rigidbody>().AddForce(directionToEnemy.normalized * -1 * bounceSpeed, ForceMode.Impulse);
-        
+
     }
-    private IEnumerator Dash()
+
+    IEnumerator Dash()
     {
         canDash = false;
         isDashing = true;
@@ -192,7 +192,7 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(time);
         spriteRenderer.color = Color.white;
         isInvincible = false;
-            
+
     }
 
     private void OnTriggerStay(Collider collision)
@@ -202,7 +202,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (collision.gameObject.layer == 6)
             {
-                
+
                 Debug.Log("player hit");
 
                 gameObject.GetComponent<PlayAudio>().PlaySound(1);
@@ -215,13 +215,13 @@ public class PlayerMovement : MonoBehaviour
 
 
                 isColliding = true;
-                
+
                 playerHit(collision.gameObject.transform);
             }
 
-            
+
         }
-        
+
 
     }
 }
