@@ -18,19 +18,41 @@ public class SpeenCycler : MonoBehaviour
     }
     void Update()
     {
-        if (time > delaytime)
+        if (!PauseScript.pauseEnabled)
         {
-            spriteSelected++;
-            if (spriteSelected > spriteArray.Length -1)
+            if (time > delaytime)
             {
-                spriteSelected = 0;
+                spriteSelected++;
+                if (spriteSelected > spriteArray.Length - 1)
+                {
+                    spriteSelected = 0;
+                }
+                image.sprite = spriteArray[spriteSelected];
+                time = 0;
             }
-            image.sprite = spriteArray[spriteSelected];
-            time = 0;
+            else
+            {
+                time += 1 * Time.deltaTime;
+            }
         }
         else
         {
-            time += 1 * Time.deltaTime;
+            if (time > 3)
+            {
+                spriteSelected++;
+                if (spriteSelected > spriteArray.Length - 1)
+                {
+                    spriteSelected = 0;
+                }
+                image.sprite = spriteArray[spriteSelected];
+                time = 0;
+            }
+            else
+            {
+                time += 1;
+            }
         }
+
+
     }
 }

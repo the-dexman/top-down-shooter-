@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode rightKey;
     public KeyCode upKey;
     public KeyCode downKey;
-
+    public GameObject pausemenu;
     //delegates
     public delegate void PlayerHit(Transform enemyHitTransform);
     public static PlayerHit playerHit;
@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update oui oui tr�s bien
     void Start()
     {
+        Instantiate(pausemenu, transform.position, Quaternion.identity);
         rigidbodyComponent.useGravity = false;
         
 
@@ -74,64 +75,68 @@ public class PlayerMovement : MonoBehaviour
         { 
             return;
         }
-		
-		
-		 Vector3 playerMovement = new Vector3(rightAxis, upAxis, 0);
 
-        gameObject.transform.Translate(playerMovement.normalized * speed * Time.deltaTime, Space.World);
+        //!true = false
+        if (!PauseScript.pauseEnabled)
+        {
 
-        //Walk animations
-		if (rightAxis == 1 && upAxis == 1)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-            animator.SetInteger("AnimationID", 1);
-        }
-        else if (rightAxis == 1 && upAxis == 0)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-            animator.SetInteger("AnimationID", 2);
-        }
-        else if (rightAxis == 1 && upAxis == -1)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-            animator.SetInteger("AnimationID", 3);
-        }
-        else if (rightAxis == -1 && upAxis == 1)
-        {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-            animator.SetInteger("AnimationID", 1);
-        }
-        else if (rightAxis == -1 && upAxis == 0)
-        {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-            animator.SetInteger("AnimationID", 2);
-        }
-        else if (rightAxis == -1 && upAxis == -1)
-        {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-            animator.SetInteger("AnimationID", 3);
-        }
-        else if (rightAxis == 0 && upAxis == -1)
-        {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-            animator.SetInteger("AnimationID", 4);
-        }
-        else if (rightAxis == 0 && upAxis == 1)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-            animator.SetInteger("AnimationID", 5);
-        }
-        else
-        {  
-            animator.SetInteger("AnimationID", 0);
-        }
-		
 
-        if (Input.GetKey(KeyCode.LeftShift) && canDash)
-        {
-            StartCoroutine(Dash());
-        }
+            Vector3 playerMovement = new Vector3(rightAxis, upAxis, 0);
 
+            gameObject.transform.Translate(playerMovement.normalized * speed * Time.deltaTime, Space.World);
+
+            //Walk animations
+            if (rightAxis == 1 && upAxis == 1)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                animator.SetInteger("AnimationID", 1);
+            }
+            else if (rightAxis == 1 && upAxis == 0)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                animator.SetInteger("AnimationID", 2);
+            }
+            else if (rightAxis == 1 && upAxis == -1)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                animator.SetInteger("AnimationID", 3);
+            }
+            else if (rightAxis == -1 && upAxis == 1)
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+                animator.SetInteger("AnimationID", 1);
+            }
+            else if (rightAxis == -1 && upAxis == 0)
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+                animator.SetInteger("AnimationID", 2);
+            }
+            else if (rightAxis == -1 && upAxis == -1)
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+                animator.SetInteger("AnimationID", 3);
+            }
+            else if (rightAxis == 0 && upAxis == -1)
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+                animator.SetInteger("AnimationID", 4);
+            }
+            else if (rightAxis == 0 && upAxis == 1)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                animator.SetInteger("AnimationID", 5);
+            }
+            else
+            {
+                animator.SetInteger("AnimationID", 0);
+            }
+
+
+            if (Input.GetKey(KeyCode.LeftShift) && canDash)
+            {
+                StartCoroutine(Dash());
+            }
+        }
     }
 
     void OnDeath()
