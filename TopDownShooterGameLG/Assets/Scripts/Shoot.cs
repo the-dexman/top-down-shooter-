@@ -32,6 +32,29 @@ public class Shoot : MonoBehaviour
 
     bool shootDelay = true;
 
+    ControllerActions controllerActions;
+    Vector2 shootDirection;
+    public int time;
+    float minAxis;
+    private void Awake()
+    {
+        controllerActions = new ControllerActions();
+
+        controllerActions.gamingActionMap.shootInDirection.performed += context => shootDirection = context.ReadValue<Vector2>(); // movement is set to the thumbstick value
+        controllerActions.gamingActionMap.shootInDirection.canceled += context => shootDirection = Vector2.zero;
+    }
+
+    private void OnEnable()
+    {
+        controllerActions.gamingActionMap.Enable();
+    }
+    private void OnDisable()
+    {
+        controllerActions.gamingActionMap.Disable();
+    }
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,24 +69,50 @@ public class Shoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime;
+        //yandere dev code my beloved
+        if (shootDirection.x <= 0.55f && shootDirection.x >= 0)
+        {
+            shootDirection.x = 0;
+        }
+        else if (shootDirection.x >= -0.55f && shootDirection.x <= 0)
+        {
+            shootDirection.x = 0;
+        }
+        else if (shootDirection.x > 0.55f)
+        {
+            shootDirection.x = 1;
+        }
+        else if (shootDirection.x < -0.55f)
+        {
+            shootDirection.x = -1;
+        }
 
+        if (shootDirection.y <= 0.55f && shootDirection.y >= 0)
+        {
+            shootDirection.y = 0;
+        }
+        else if (shootDirection.y >= -0.55f && shootDirection.y <= 0)
+        {
+            shootDirection.y = 0;
+        }
+        else if (shootDirection.y > 0.55f)
+        {
+            shootDirection.y = 1;
+        }
+        else if (shootDirection.y < -0.55f)
+        {
+            shootDirection.y = -1;
+        }
+
+        timer -= Time.deltaTime;
         if (timer <= 0)
         {
-
-
-            if (Input.GetKey(downKey) || Input.GetKey(rightKey) || Input.GetKey(leftKey) || Input.GetKey(upKey))
+            if (Input.GetKey(downKey) || Input.GetKey(rightKey) || Input.GetKey(leftKey) || Input.GetKey(upKey) || shootDirection.x == 1 || shootDirection.x == -1 || shootDirection.y == 1 || shootDirection.y == -1 )
             {
-
-
-
-
-
                 if (shootDelay) //to make sure you don't move and shoot on the same frame (if you turn you'll shoot the way you're facing right now first)
                 {
                     shootDelay = false;
                     return;
-
                 }
                 else
                 {
@@ -75,20 +124,7 @@ public class Shoot : MonoBehaviour
                     shootDelay = true;
 
                 }
-
-
-
             }
         }
-
-
-
-
-
-
     }
-
-
-
-
 }

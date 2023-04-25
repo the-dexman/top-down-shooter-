@@ -386,7 +386,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 6946639530369387665}
-  pauseKeyCode: 27
+  pauseKeyCodePC: 27
+  pauseKeyCodeArcade: 109
   menuSceneID: 0
 --- !u!114 &5372385495525637459
 MonoBehaviour:
@@ -403,7 +404,6 @@ MonoBehaviour:
   resumeButton: {fileID: 6946639530804931421}
   menuButton: {fileID: 6946639531458839229}
   selectionMarker: {fileID: 5185058178963763342}
-  creditsScreen: {fileID: 0}
   currentButtonID: 0
   eventSystem: {fileID: 0}
   selectorOffset: 500

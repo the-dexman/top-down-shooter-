@@ -1,0 +1,60 @@
+{
+    "name": "ControllerActions",
+    "maps": [
+        {
+            "name": "gamingActionMap",
+            "id": "117ba502-b680-4494-bc0f-6dcf39dc4abd",
+            "actions": [
+                {
+                    "name": "movement",
+                    "type": "Value",
+                    "id": "64ecdf55-ef43-4543-aabe-31c873883b11",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "shootInDirection",
+                    "type": "Value",
+                    "id": "efb40e1b-fbca-4d9a-bbc7-4f048b0d3484",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "cc87bdce-ae4a-4cdb-83b3-bc4b29692040",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "xbox controlscheme",
+                    "action": "movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b719090e-15e8-440f-9acf-27c5267f130b",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "xbox controlscheme",
+                    "action": "shootInDirection",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "xbox controlscheme",
+            "bindingGroup": "xbox controlscheme",
+            "devices": []
+        }
+    ]
+}

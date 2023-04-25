@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
@@ -47,9 +48,31 @@ public class PlayerMovement : MonoBehaviour
     public static PlayerHit playerHit;
 
 
-    // Start is called before the first frame update oui oui tr�s bien
+    ControllerActions controllerActions;
+    Vector2 controllerMovement;
+    public int time;
+    float minAxis;
+
+    private void Awake()
+    {
+        controllerActions = new ControllerActions();
+
+        controllerActions.gamingActionMap.movement.performed += context => controllerMovement = context.ReadValue<Vector2>(); // movement is set to the thumbstick value
+        controllerActions.gamingActionMap.movement.canceled += context => controllerMovement = Vector2.zero;
+    }
+
+    private void OnEnable()
+    {
+        controllerActions.gamingActionMap.Enable();
+    }
+    private void OnDisable()
+    {
+        controllerActions.gamingActionMap.Disable();
+    }
+
     void Start()
     {
+        minAxis = joystickvars.minimumAxis;
         Instantiate(pausemenu, transform.position, Quaternion.identity);
         rigidbodyComponent.useGravity = false;
 
@@ -81,12 +104,44 @@ public class PlayerMovement : MonoBehaviour
         //!true = false
         if (!PauseScript.pauseEnabled)
         {
+            //yandere dev code my beloved
+            if (controllerMovement.x <= 0.5f && controllerMovement.x >= 0)
+            {
+                controllerMovement.x = 0;
+            }
+            else if (controllerMovement.x >= -0.5f && controllerMovement.x <= 0)
+            {
+                controllerMovement.x = 0;
+            }
+            else if (controllerMovement.x > 0.5f)
+            {
+                controllerMovement.x = 1;
+            }
+            else if (controllerMovement.x < -0.5f)
+            {
+                controllerMovement.x = -1;
+            }
 
+            if (controllerMovement.y <= 0.5f && controllerMovement.y >= 0)
+            {
+                controllerMovement.y = 0;
+            }
+            else if (controllerMovement.y >= -0.5f && controllerMovement.y <= 0)
+            {
+                controllerMovement.y = 0;
+            }
+            else if (controllerMovement.y > 0.5f)
+            {
+                controllerMovement.y = 1;
+            }
+            else if (controllerMovement.y < -0.5f)
+            {
+                controllerMovement.y = -1;
+            }
 
-            
+            upAxis = controllerMovement.y;
+            rightAxis = controllerMovement.x;
 
-
-            
             Vector3 playerMovement = new Vector3(rightAxis, upAxis, 0);
 
             gameObject.transform.Translate(playerMovement.normalized * speed * Time.deltaTime, Space.World);

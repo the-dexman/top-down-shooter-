@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class PauseScript : MonoBehaviour
 {
     public GameObject pauseMenu;
-    public KeyCode pauseKeyCode;
+    public KeyCode pauseKeyCodePC;
+    public KeyCode pauseKeyCodeArcade;
     public static bool pauseEnabled = false;
     public int menuSceneID;
     void Start()
@@ -17,7 +18,7 @@ public class PauseScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(pauseKeyCode))
+        if (Input.GetKeyDown(pauseKeyCodePC))
         {
             if (pauseEnabled)
             {
@@ -27,7 +28,17 @@ public class PauseScript : MonoBehaviour
             {
                 PauseGame();
             }
-
+        }
+        if (Input.GetKeyDown(pauseKeyCodeArcade))
+        {
+            if (pauseEnabled)
+            {
+                ResumeGame();
+            }
+            else
+            {
+                PauseGame();
+            }
         }
     }
     // !true = false
